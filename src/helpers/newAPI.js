@@ -25,17 +25,34 @@ export function getArticles(data) {
       lang: "eng",
       locationUri: "http://en.wikipedia.org/wiki/India",
     },
-    $filter: { forceMaxDataTimeWindow: "31" },
+    $filter: { forceMaxDataTimeWindow: "31", isDuplicate: "skipDuplicates" },
   };
-
+  const temp = [];
   if (category) {
-    query.$query.categoryUri = category;
+    temp.push({
+      categoryUri: category,
+    });
   }
-
   if (keyword) {
-    query.keyword = keyword;
+    temp.push({
+      keyword,
+      keywordLoc: "title",
+    });
   }
+  // if (category) {
+  //   tempObj..categoryUri = category;
+  // }
+  // if (keyword) {
+  //   tempObj.keyword = keyword;
+  //   tempObj.keywordLoc = "title";
+  // }
 
+  if (temp.length > 1) {
+    query.$query.$and = temp;
+  } else {
+    query.$query = temp[0];
+  }
+  console.log(query);
   const params = new URLSearchParams({
     ...defaultQueryParameters,
     query: JSON.stringify(query),

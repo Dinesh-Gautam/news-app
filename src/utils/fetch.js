@@ -17506,15 +17506,15 @@ const tempResponse = {
 };
 
 export function customFetch(endPoint, params) {
-  return {
-    controller: null,
-    promise: new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(tempResponse);
-        // reject(error("Network Error"));
-      }, 1000);
-    }),
-  };
+  // return {
+  //   controller: null,
+  //   promise: new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve(tempResponse);
+  //       // reject(error("Network Error"));
+  //     }, 1000);
+  //   }),
+  // };
 
   const fetchUrl = new URL(endPoint);
   if (params) {

@@ -73,21 +73,28 @@ function CategoryList() {
 }
 
 function Search() {
-  const { changeParam } = useSearchParamsActions();
-  const [value, setValue] = useState("");
+  const { changeParam, getParam } = useSearchParamsActions();
+  const [value, setValue] = useState(getParam("keyword") || "");
 
   function keywordClickHandler(keyword) {
-    changeParam("keyword", keyword);
+    if (keyword) changeParam("keyword", keyword);
   }
+
   return (
-    <div className={styles.search}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        keywordClickHandler(value);
+      }}
+      className={styles.search}
+    >
       <input
         value={value}
         onChange={(e) => setValue(e.target.value)}
         type="text"
         placeholder="Search Keyword"
       />
-      <button onClick={() => keywordClickHandler()}>Go</button>
-    </div>
+      <button type="submit">Go</button>
+    </form>
   );
 }
