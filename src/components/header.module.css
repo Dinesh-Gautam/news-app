@@ -5,6 +5,9 @@
     align-items: flex-end;
     justify-content: space-between;
     margin-bottom: var(--padding);
+    padding-inline: var(--padding);
+    padding-bottom: calc(var(--padding) * 2 );
+    border-bottom : 1px solid var(--secondary);
 }
 
 .container h1{

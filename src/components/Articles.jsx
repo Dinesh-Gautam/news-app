@@ -1,6 +1,7 @@
 import { actions, useNewsApi } from "../hooks/useNewsApi";
 import useSearchParamsActions from "../hooks/useSearchParamsActions";
-import { isArrayEmpty } from "../utils/common";
+import { cn, isArrayEmpty } from "../utils/common";
+import styles from "./articles.module.css";
 
 export function Articles() {
   const { searchParams } = useSearchParamsActions();
@@ -18,9 +19,11 @@ export function Articles() {
   console.log(data);
 
   return (
-    <div>
+    <div className={styles.container}>
       {results && !isArrayEmpty(results) ? (
-        results.map((article) => <Article key={article.uri} {...article} />)
+        results.map((article, index) => (
+          <Article key={article.uri} banner={index === 0} {...article} />
+        ))
       ) : (
         <div>Nothing to show</div>
       )}
@@ -28,11 +31,25 @@ export function Articles() {
   );
 }
 
-function Article({ title, body }) {
+function Article({ title, body, image, date, banner }) {
   return (
     <div>
-      <h6>{title}</h6>
-      <p>{body}</p>
+      <div className={cn(styles.article, banner && styles.banner)}>
+        {image && (
+          <div className={styles.imageContainer}>
+            <img src={image} alt="title" />
+          </div>
+        )}
+        <div className={styles.content}>
+          <h2>{title}</h2>
+          <span>{date}</span>
+          <p>{body}</p>
+        </div>
+        <div className={styles.buttons}>
+          <button>Favorite</button>
+          <button>Read More</button>
+        </div>
+      </div>
     </div>
   );
 }

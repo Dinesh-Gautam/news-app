@@ -1,6 +1,10 @@
 :root {
+    --primaryColor : 255,255,255;
+    --secondaryColor: 0,0,0;
     --primary : rgb(255,255,255);
     --secondary: rgb(0,0,0);
     --font-size : 14px;
-    --padding : calc(var(--font-size) - 4px)
+    --padding : calc(var(--font-size) - 4px);
+    --borderRadius : 4px;
+    --mainWidth: 1330px;
 }
