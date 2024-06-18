@@ -1,0 +1,44 @@
+.container {
+    gap: var(--padding);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: var(--padding);
+}
+
+.container h1{
+    margin-bottom: var(--padding);
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--padding);
+    flex : 0;
+}
+
+.categories button {
+    border-radius: 9999px;
+    transition: all 0.2s ease-in-out;
+}
+
+.categories button:hover, .categories button.active {
+    color : var(--primary);
+    background : var(--secondary);
+}
+
+.search {
+    display: flex;
+    border: 1px solid var(--secondary);
+    border-radius: 999px;
+    min-width: 200px;
+}
+
+.search input {
+    flex : 1;
+}
+
+.search input , .search button {
+    border : none;
+}

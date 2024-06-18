@@ -17505,7 +17505,7 @@ const tempResponse = {
   },
 };
 
-export function customFetch(endPoint, data) {
+export function customFetch(endPoint, params) {
   return {
     controller: null,
     promise: new Promise((resolve, reject) => {
@@ -17517,8 +17517,8 @@ export function customFetch(endPoint, data) {
   };
 
   const fetchUrl = new URL(endPoint);
-  if (data) {
-    fetchUrl.search = data;
+  if (params) {
+    fetchUrl.search = params;
   }
 
   const controller = new AbortController();
@@ -17537,7 +17537,7 @@ export function customFetch(endPoint, data) {
   return { controller, promise };
 }
 
-function error(message) {
+export function error(message) {
   console.error(message);
   return { error: true, message };
 }

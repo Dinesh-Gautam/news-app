@@ -16,16 +16,30 @@ const defaultQueryParameters = {
   resultType: "articles",
 };
 
-export function getArticles() {
+export function getArticles(data) {
+  const { keyword, category } = data;
+  console.log(keyword, category);
+
   const query = {
-    $query: { lang: "eng", locationUri: "http://en.wikipedia.org/wiki/India" },
+    $query: {
+      lang: "eng",
+      locationUri: "http://en.wikipedia.org/wiki/India",
+    },
     $filter: { forceMaxDataTimeWindow: "31" },
   };
 
-  const data = new URLSearchParams({
+  if (category) {
+    query.$query.categoryUri = category;
+  }
+
+  if (keyword) {
+    query.keyword = keyword;
+  }
+
+  const params = new URLSearchParams({
     ...defaultQueryParameters,
     query: JSON.stringify(query),
   });
 
-  return customFetch(endPoint, data);
+  return customFetch(endPoint, params);
 }

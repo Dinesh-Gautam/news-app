@@ -1,34 +1,71 @@
 import { useState } from "react";
-import { useStore } from "../contexts/Store";
-import { useSearchParams } from "react-router-dom";
+import useSearchParamsActions from "../hooks/useSearchParamsActions";
+
+import styles from "./header.module.css";
 
 export function Header() {
-  const { setSearchParams } = useStore();
-
   return (
-    <header>
-      <h1>Latest News</h1>
-      <CategoryList />
+    <header className={styles.container}>
+      <div>
+        <h1>Latest News</h1>
+        <CategoryList />
+      </div>
       <Search />
     </header>
   );
 }
 
-const categories = ["Business", "Sports", "World", "Politics", "Breaking"];
+const categories = [
+  {
+    label: "Entertainment",
+    uri: "news/Arts_and_Entertainment",
+  },
+  {
+    label: "Business",
+    uri: "news/Business",
+  },
+  {
+    label: "Environment",
+    uri: "news/Environment",
+  },
+  {
+    label: "Health",
+    uri: "news/Health",
+  },
+  {
+    label: "Politics",
+    uri: "news/Politics",
+  },
+  {
+    label: "Science",
+    uri: "news/Science",
+  },
+  {
+    label: "Sports",
+    uri: "news/Sports",
+  },
+];
+
 function CategoryList() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { changeParam, getParam } = useSearchParamsActions();
 
   function categoryClickHandler(category) {
-    console.log(searchParams);
+    changeParam("category", category);
+  }
 
-    setSearchParams(searchParams.append("category", category));
+  function isActive(uri) {
+    return getParam("category") === uri;
   }
 
   return (
-    <div>
-      {categories.map((category) => (
-        <button onClick={() => categoryClickHandler(category)} key={category}>
-          {category}
+    <div className={styles.categories}>
+      {categories.map(({ uri, label }) => (
+        <button
+          className={isActive(uri) ? styles.active : ""}
+          onClick={() => categoryClickHandler(uri)}
+          key={uri}
+        >
+          {label}
         </button>
       ))}
     </div>
@@ -36,10 +73,21 @@ function CategoryList() {
 }
 
 function Search() {
+  const { changeParam } = useSearchParamsActions();
+  const [value, setValue] = useState("");
+
+  function keywordClickHandler(keyword) {
+    changeParam("keyword", keyword);
+  }
   return (
-    <div>
-      <input type="text" placeholder="Search" />
-      <button>Go</button>
+    <div className={styles.search}>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        type="text"
+        placeholder="Search Keyword"
+      />
+      <button onClick={() => keywordClickHandler()}>Go</button>
     </div>
   );
 }

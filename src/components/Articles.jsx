@@ -1,7 +1,9 @@
-import { useEffect } from "react";
 import { actions, useNewsApi } from "../hooks/useNewsApi";
+import useSearchParamsActions from "../hooks/useSearchParamsActions";
+import { isArrayEmpty } from "../utils/common";
 
 export function Articles() {
+  const { searchParams } = useSearchParamsActions();
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLES);
   const { pages, results } = data?.articles || {};
 
@@ -17,7 +19,7 @@ export function Articles() {
 
   return (
     <div>
-      {results ? (
+      {results && !isArrayEmpty(results) ? (
         results.map((article) => <Article key={article.uri} {...article} />)
       ) : (
         <div>Nothing to show</div>

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { getArticles } from "../helpers/newAPI";
+import useSearchParamsActions from "./useSearchParamsActions";
 
 export const actions = {
   GET_ARTICLES: 0,
@@ -16,7 +17,9 @@ export function useNewsApi(action) {
   const [loading, setLoading] = useState(initialState.loading);
   const [error, setError] = useState(initialState.error);
 
-  useEffect(handleRequest, []);
+  const { searchParams } = useSearchParamsActions();
+
+  useEffect(handleRequest, [searchParams]);
 
   function resetState() {
     setData(initialState.data);
@@ -31,7 +34,11 @@ export function useNewsApi(action) {
     let response;
 
     if (action === actions.GET_ARTICLES) {
-      response = getArticles();
+      console.log("getting");
+      response = getArticles({
+        keyword: searchParams.get("keyword"),
+        category: searchParams.get("category"),
+      });
     }
 
     if (response) {
