@@ -1,4 +1,10 @@
+import { useState } from "react";
+import { useStore } from "../contexts/Store";
+import { useSearchParams } from "react-router-dom";
+
 export function Header() {
+  const { setSearchParams } = useStore();
+
   return (
     <header>
       <h1>Latest News</h1>
@@ -8,12 +14,22 @@ export function Header() {
   );
 }
 
+const categories = ["Business", "Sports", "World", "Politics", "Breaking"];
 function CategoryList() {
-  const categories = ["Business", "Sports", "World", "Politics", "Breaking"];
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  function categoryClickHandler(category) {
+    console.log(searchParams);
+
+    setSearchParams(searchParams.append("category", category));
+  }
+
   return (
     <div>
       {categories.map((category) => (
-        <button key={category}> {category} </button>
+        <button onClick={() => categoryClickHandler(category)} key={category}>
+          {category}
+        </button>
       ))}
     </div>
   );

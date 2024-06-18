@@ -1,13 +1,32 @@
-import { Articles } from "./components/Articles";
-import { Header } from "./components/Header";
+import Home from "./pages/home";
 import "./styles/App.css";
+
+import {
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
+import { StoreProvider } from "./contexts/Store";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+]);
 
 function App() {
   return (
-    <main>
-      <Header />
-      <Articles />
-    </main>
+    <StoreProvider>
+      <main>
+        <RouterProvider router={router}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </RouterProvider>
+      </main>
+    </StoreProvider>
   );
 }
 

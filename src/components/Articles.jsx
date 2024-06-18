@@ -1,24 +1,36 @@
 import { useEffect } from "react";
-import { useNewsApi } from "../hooks/useNewsApi";
+import { actions, useNewsApi } from "../hooks/useNewsApi";
 
 export function Articles() {
-  const articles = useNewsApi();
+  const { data, loading, error } = useNewsApi(actions.GET_ARTICLES);
+  const { pages, results } = data?.articles || {};
+
+  if (error.error) {
+    return <div>{error.message || "Something went wrong!"}</div>;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(data);
 
   return (
     <div>
-      hello
-      {/* {articles.map((article) => (
-        <Article key={article.title} {...article} />
-      ))} */}
+      {results ? (
+        results.map((article) => <Article key={article.uri} {...article} />)
+      ) : (
+        <div>Nothing to show</div>
+      )}
     </div>
   );
 }
 
-function Article({ title, content }) {
+function Article({ title, body }) {
   return (
     <div>
-      <h2>{title}</h2>
-      <p>{content}</p>
+      <h6>{title}</h6>
+      <p>{body}</p>
     </div>
   );
 }
