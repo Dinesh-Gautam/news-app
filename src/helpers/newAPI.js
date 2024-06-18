@@ -18,7 +18,6 @@ const defaultQueryParameters = {
 
 export function getArticles(data) {
   const { keyword, category } = data;
-  console.log(keyword, category);
 
   const query = {
     $query: {
@@ -27,32 +26,28 @@ export function getArticles(data) {
     },
     $filter: { forceMaxDataTimeWindow: "31", isDuplicate: "skipDuplicates" },
   };
+
   const temp = [];
+
   if (category) {
     temp.push({
       categoryUri: category,
     });
   }
+
   if (keyword) {
     temp.push({
       keyword,
       keywordLoc: "title",
     });
   }
-  // if (category) {
-  //   tempObj..categoryUri = category;
-  // }
-  // if (keyword) {
-  //   tempObj.keyword = keyword;
-  //   tempObj.keywordLoc = "title";
-  // }
 
   if (temp.length > 1) {
     query.$query.$and = temp;
   } else {
-    query.$query = temp[0];
+    query.$query = { ...query.$query, ...temp[0] };
   }
-  console.log(query);
+
   const params = new URLSearchParams({
     ...defaultQueryParameters,
     query: JSON.stringify(query),

@@ -38,11 +38,12 @@
 }
 
 .article.banner {
-    display: flex;
     min-width : clamp(var(--maxWidth) , 60vw , var(--mainWidth));
+    color : var(--primary);
+    display: flex;
     contain : layout;
     position: relative;
-    color : var(--primary);
+    min-height: fit-content;
 }
 
 .article.banner .content {
