@@ -1,0 +1,17 @@
+.container {
+    background : var(--primary);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-items: center;
+    padding: var(--padding);
+}
+
+.container button {
+    border-radius: 999px;
+}
+
+.container button:disabled {
+    pointer-events: none;
+    opacity: 0.2;
+}

@@ -17,7 +17,7 @@ const defaultQueryParameters = {
 };
 
 export function getArticles(data) {
-  const { keyword, category } = data;
+  const { keyword, category, page } = data;
 
   const query = {
     $query: {
@@ -50,6 +50,7 @@ export function getArticles(data) {
 
   const params = new URLSearchParams({
     ...defaultQueryParameters,
+    articlesPage: page || 2,
     query: JSON.stringify(query),
   });
 

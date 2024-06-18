@@ -19,6 +19,7 @@ export function useNewsApi(action) {
 
   const { searchParams } = useSearchParamsActions();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(handleRequest, [searchParams]);
 
   function resetState() {
@@ -34,10 +35,10 @@ export function useNewsApi(action) {
     let response;
 
     if (action === actions.GET_ARTICLES) {
-      console.log("getting");
       response = getArticles({
         keyword: searchParams.get("keyword"),
         category: searchParams.get("category"),
+        page: searchParams.get("page"),
       });
     }
 

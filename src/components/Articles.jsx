@@ -1,10 +1,11 @@
 import { actions, useNewsApi } from "../hooks/useNewsApi";
 import useSearchParamsActions from "../hooks/useSearchParamsActions";
 import { cn, isArrayEmpty } from "../utils/common";
+import Pagination from "./Pagination";
 import styles from "./articles.module.css";
 
 export function Articles() {
-  const { searchParams } = useSearchParamsActions();
+  const { searchParams, changeParam, getParam } = useSearchParamsActions();
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLES);
   const { pages, results } = data?.articles || {};
 
@@ -19,15 +20,22 @@ export function Articles() {
   console.log(data);
 
   return (
-    <div className={styles.container}>
-      {results && !isArrayEmpty(results) ? (
-        results.map((article, index) => (
-          <Article key={article.uri} isBanner={index === 0} {...article} />
-        ))
-      ) : (
-        <div>Nothing to show</div>
-      )}
-    </div>
+    <>
+      <Pagination
+        onPageChange={(pageNo) => changeParam("page", pageNo)}
+        currentPage={getParam("page") || 1}
+        maxPages={pages}
+      />
+      <div className={styles.container}>
+        {results && !isArrayEmpty(results) ? (
+          results.map((article, index) => (
+            <Article key={article.uri} isBanner={index === 0} {...article} />
+          ))
+        ) : (
+          <div>Nothing to show</div>
+        )}
+      </div>
+    </>
   );
 }
 
