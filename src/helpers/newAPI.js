@@ -1,6 +1,9 @@
 import { customFetch } from "../utils/fetch";
 
-const endPoint = `https://www.newsapi.ai/api/v1/article/getArticles`;
+const endPoints = {
+  GET_ARTICLE_DETAIL: `https://www.newsapi.ai/api/v1/article/getArticle`,
+  GET_ARTICLES: `https://www.newsapi.ai/api/v1/article/getArticles`,
+};
 
 const defaultQueryParameters = {
   apiKey: "4271398c-d71a-4b4f-b294-0796541a1384",
@@ -16,9 +19,7 @@ const defaultQueryParameters = {
   resultType: "articles",
 };
 
-export function getArticles(data) {
-  const { keyword, category, page } = data;
-
+export function getArticles({ keyword, category, page }) {
   const query = {
     $query: {
       lang: "eng",
@@ -54,5 +55,16 @@ export function getArticles(data) {
     query: JSON.stringify(query),
   });
 
-  return customFetch(endPoint, params);
+  return customFetch(endPoints.GET_ARTICLES, params);
+}
+
+export function getArticleDetails({ id }) {
+  const params = new URLSearchParams({
+    articleUri: [id],
+    resultType: "info",
+    includeArticleImage: true,
+    apiKey: defaultQueryParameters.apiKey,
+  });
+
+  return customFetch(endPoints.GET_ARTICLE_DETAIL, params);
 }

@@ -1,21 +1,22 @@
-import { useEffect, useMemo, useState } from "react";
-import { getArticles } from "../helpers/newAPI";
+import { useEffect, useState } from "react";
+import { getArticleDetails, getArticles } from "../helpers/newAPI";
 import useSearchParamsActions from "./useSearchParamsActions";
 
 export const actions = {
   GET_ARTICLES: 0,
+  GET_ARTICLE_DETAIL: 1,
 };
 
 const initialState = {
-  data: null,
-  loading: false,
-  error: { error: false, message: "" },
+  DATA: null,
+  LOADING: false,
+  ERROR: { error: false, message: "" },
 };
 
 export function useNewsApi(action) {
-  const [data, setData] = useState(initialState.data);
-  const [loading, setLoading] = useState(initialState.loading);
-  const [error, setError] = useState(initialState.error);
+  const [data, setData] = useState(initialState.DATA);
+  const [loading, setLoading] = useState(initialState.LOADING);
+  const [error, setError] = useState(initialState.ERROR);
 
   const { searchParams } = useSearchParamsActions();
 
@@ -23,9 +24,9 @@ export function useNewsApi(action) {
   useEffect(handleRequest, [searchParams]);
 
   function resetState() {
-    setData(initialState.data);
-    setLoading(initialState.loading);
-    setError(initialState.error);
+    setData(initialState.DATA);
+    setLoading(initialState.LOADING);
+    setError(initialState.ERROR);
   }
 
   function handleRequest() {
@@ -34,12 +35,24 @@ export function useNewsApi(action) {
 
     let response;
 
-    if (action === actions.GET_ARTICLES) {
-      response = getArticles({
-        keyword: searchParams.get("keyword"),
-        category: searchParams.get("category"),
-        page: searchParams.get("page"),
-      });
+    switch (action) {
+      case actions.GET_ARTICLES:
+        response = getArticles({
+          keyword: searchParams.get("keyword"),
+          category: searchParams.get("category"),
+          page: searchParams.get("page"),
+        });
+        break;
+
+      case actions.GET_ARTICLE_DETAIL:
+        response = getArticleDetails({
+          id: searchParams.get("id"),
+        });
+        break;
+
+      default:
+        response = null;
+        break;
     }
 
     if (response) {

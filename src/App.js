@@ -1,18 +1,18 @@
 import Home from "./pages/home";
 import "./styles/App.css";
 
-import {
-  createBrowserRouter,
-  Route,
-  RouterProvider,
-  Routes,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { StoreProvider } from "./contexts/Store";
+import Detail from "./pages/detail";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/detail",
+    element: <Detail />,
   },
 ]);
 
