@@ -3,7 +3,8 @@
     gap : var(--padding);
     padding-top: var(--padding);
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: stretch;
+    align-items: flex-start;
 }
 
 .article {
@@ -12,6 +13,8 @@
     overflow: hidden;
     border-radius: var(--borderRadius);
     width: var(--maxWidth);
+    max-height: min-content;
+    flex-grow: 1;
     outline: none;
     transform: scale(1);
     transition: all 0.2s ease-in-out;
@@ -38,12 +41,12 @@
 }
 
 .article.banner {
-    width : clamp(var(--maxWidth) , 60vw , var(--mainWidth));
+    width : clamp(var(--maxWidth) , 50vw , var(--mainWidth));
     color : var(--primary);
-    display: flex;
+    /* display: flex; */
     contain : layout;
     position: relative;
-    min-height: 30vh;
+    min-height: fit-content;
 }
 
 .article.banner .content {
@@ -109,7 +112,7 @@
 }
 
 .imageContainer img{
-    height: 120%;
+    height: 100%;
     width: 100%;
     object-fit: cover;
     background : rgba(0,0,0,0.3);

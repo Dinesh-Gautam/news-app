@@ -2,35 +2,43 @@ import React from "react";
 import styles from "./skeleton.module.css";
 import { cn } from "../utils/common";
 
-const title = () => {
+const Title = () => {
   return <div className={cn(styles.default, styles.title)}></div>;
 };
 
-const image = () => {
+const Image = () => {
   return <div className={cn(styles.default, styles.image)}></div>;
 };
 
-const span = () => {
+const Span = () => {
   return <div className={cn(styles.default, styles.span)}></div>;
 };
 
-const paragraph = ({ lineCount = 4 }) => {
-  return Array.from(lineCount).map((_, i) => {
-    const isLast = i === lineCount - 1;
-    return (
-      <div
-        key={i}
-        className={cn(styles.default, styles.paragraph, isLast && styles.half)}
-      ></div>
-    );
-  });
+const Paragraph = ({ lineCount = 3 }) => {
+  return (
+    <div className={styles.paragraphContainer}>
+      {Array.from({ length: lineCount }).map((_, i) => {
+        const isLast = i === lineCount - 1;
+        return (
+          <div
+            key={i}
+            className={cn(
+              styles.default,
+              styles.paragraph,
+              isLast && styles.half
+            )}
+          ></div>
+        );
+      })}
+    </div>
+  );
 };
 
 const Skeleton = {
-  title,
-  paragraph,
-  image,
-  span,
+  Title,
+  Image,
+  Span,
+  Paragraph,
 };
 
 export default Skeleton;
