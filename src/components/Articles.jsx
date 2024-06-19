@@ -16,12 +16,11 @@ export function Articles() {
     return <Error message={error.message} />;
   }
 
-  if (loading) {
+  if (loading || !results) {
     return <div>Loading...</div>;
   }
 
-  if (!results || isArrayEmpty(results))
-    return <Nothing message="No Articles found" />;
+  if (isArrayEmpty(results)) return <Nothing message="No Articles found" />;
 
   return (
     <>
@@ -62,11 +61,6 @@ function Article({ title, body, image, date, isBanner, uri }) {
             </div>
           </div>
         </Link>
-
-        <div className={styles.buttons}>
-          <button>Favorite</button>
-          <button>Read More</button>
-        </div>
       </div>
     </div>
   );
