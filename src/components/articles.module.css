@@ -41,7 +41,7 @@
 }
 
 .article.banner {
-    width : clamp(var(--maxWidth) , 50vw , var(--mainWidth));
+    width : clamp(calc(var(--maxWidth) * 2), 50vw , var(--mainWidth));
     color : var(--primary);
     /* display: flex; */
     contain : layout;
