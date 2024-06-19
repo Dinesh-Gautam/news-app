@@ -3,9 +3,8 @@
     gap : var(--padding);
     padding-top: var(--padding);
     flex-wrap: wrap;
-    justify-content: stretch;
+    justify-content: center;
 }
-
 
 .article {
     --maxWidth : calc(var(--mainWidth) / 5);

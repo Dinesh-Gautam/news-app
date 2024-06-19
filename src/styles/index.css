@@ -7,17 +7,30 @@
   box-sizing: border-box;
 }
 
+html, body {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding : var(--padding);
+  min-height: 100vh;
+  display: flex;
 }
 
 main {
   max-width: var(--mainWidth);
   margin: auto;
+}
+
+#root {
+  width: 100%;
+  min-height:100%;
+  flex-direction: column;
+  display: flex;
 }
 
 button {
@@ -31,6 +44,8 @@ button, input {
   background:none;
   border : 1px solid var(--secondary);
   font-family: inherit;
+  border-radius: 999px;
+  transition : box-shadow 0.2s ease-in-out;
 }
 
 a {

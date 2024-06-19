@@ -2,23 +2,26 @@ import { Link } from "react-router-dom";
 import { actions, useNewsApi } from "../hooks/useNewsApi";
 import useSearchParamsActions from "../hooks/useSearchParamsActions";
 import { cn, isArrayEmpty } from "../utils/common";
+import Error from "./Error";
 import Pagination from "./Pagination";
 import styles from "./articles.module.css";
+import Nothing from "./Nothing";
 
 export function Articles() {
-  const { searchParams, changeParam, getParam } = useSearchParamsActions();
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLES);
+  const { changeParam, getParam } = useSearchParamsActions();
   const { pages, results } = data?.articles || {};
 
   if (error.error) {
-    return <div>{error.message || "Something went wrong!"}</div>;
+    return <Error message={error.message} />;
   }
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (!results || isArrayEmpty(results)) return <div>Nothing to show</div>;
+  if (!results || isArrayEmpty(results))
+    return <Nothing message="No Articles found" />;
 
   return (
     <>

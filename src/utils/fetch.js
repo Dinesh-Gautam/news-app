@@ -17735,8 +17735,8 @@ export function customFetch(endPoint, params) {
     controller: null,
     promise: new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(tempDetailResponse);
-        // reject(error("Network Error"));
+        // resolve(tempResponse);
+        reject(error("Network Error"));
       }, 1000);
     }),
   };

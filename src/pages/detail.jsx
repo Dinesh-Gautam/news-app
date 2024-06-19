@@ -1,11 +1,10 @@
 import React, { useMemo } from "react";
 import { actions, useNewsApi } from "../hooks/useNewsApi";
-
-import styles from "./detail.module.css";
-import articleStyles from "../components/articles.module.css";
 import useSearchParamsActions from "../hooks/useSearchParamsActions";
-import { calculateReadTime, cn } from "../utils/common";
-import { Articles } from "../components/Articles";
+import { calculateReadTime } from "../utils/common";
+import styles from "./detail.module.css";
+import { ErrorBoundary } from "react-error-boundary";
+import Error from "../components/Error";
 
 function Detail() {
   const { getParam } = useSearchParamsActions();
@@ -20,36 +19,41 @@ function Detail() {
     data && data[parseInt(getParam("id"))].info;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.sidebar}>helo</div>
-      <div className={styles.main}>
-        <div className={styles.header}>
-          <Category categories={categories} />
-        </div>
-        <div className={styles.top}>
-          <Info
-            authors={authors}
-            date={date}
-            body={body}
-            country={location.country.label.eng}
-          />
-          <h1>{title}</h1>
-          {image && (
-            <div className={styles.imageContainer}>
-              <img loading="lazy" src={image} alt={title} />
+    <ErrorBoundary
+      onError={(error, info) => console.error(error, info)}
+      fallback={<Error />}
+    >
+      <div className={styles.container}>
+        <div></div>
+        <div className={styles.main}>
+          <div className={styles.header}>
+            <Category categories={categories} />
+          </div>
+          <div className={styles.top}>
+            <Info
+              authors={authors}
+              date={date}
+              body={body}
+              country={location.country.label.eng}
+            />
+            <h1>{title}</h1>
+            {image && (
+              <div className={styles.imageContainer}>
+                <img loading="lazy" src={image} alt={title} />
+              </div>
+            )}
+            <div className={styles.additionalInfo}>
+              <button>Add to Favorite</button>
+              <a href={"https://" + source.uri}>Source</a>
             </div>
-          )}
-          <div className={styles.additionalInfo}>
-            <button>Add to Favorite</button>
-            <a href={"https://" + source.uri}>Source</a>
+          </div>
+          <div className={styles.content}>
+            <p>{body}</p>
           </div>
         </div>
-        <div className={styles.content}>
-          <p>{body}</p>
-        </div>
+        <div>{/* <Articles /> */}</div>
       </div>
-      <div>{/* <Articles /> */}</div>
-    </div>
+    </ErrorBoundary>
   );
 }
 
