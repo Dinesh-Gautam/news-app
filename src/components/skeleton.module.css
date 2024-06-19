@@ -34,6 +34,7 @@
 
 .image {
     height: 100%;
+    aspect-ratio: 16/9;
 }
 
 .title {
@@ -48,6 +49,12 @@
 .paragraphContainer {
     display: flex;
     flex-direction: column;
+}
+
+.button {
+    border-radius: 999px;
+    max-width: 10%;
+    padding : calc(var(--padding) * 1.5);
 }
 
 .paragraph.half {

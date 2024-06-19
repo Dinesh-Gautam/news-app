@@ -5,15 +5,18 @@ import { calculateReadTime } from "../utils/common";
 import styles from "./detail.module.css";
 import { ErrorBoundary } from "react-error-boundary";
 import Error from "../components/Error";
+import Nothing from "../components/Nothing";
+import Skeleton from "../components/Skeleton";
 
 function Detail() {
   const { getParam } = useSearchParamsActions();
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLE_DETAIL);
-  console.log(data, loading, error);
 
-  if (loading) return <p>Loading...</p>;
-  if (error.error) return <p>Error</p>;
-  if (!data || Object.keys(data).length === 0) return <h2>Nothing to show</h2>;
+  if (error.error) return <Error message={error.message} />;
+
+  if (loading || !data) return <SkeletonLoading />;
+
+  if (Object.keys(data).length === 0) return <Nothing />;
 
   const { title, body, image, categories, authors, date, location, source } =
     data && data[parseInt(getParam("id"))].info;
@@ -54,6 +57,48 @@ function Detail() {
         <div>{/* <Articles /> */}</div>
       </div>
     </ErrorBoundary>
+  );
+}
+
+function SkeletonLoading() {
+  return (
+    <div className={styles.container}>
+      <div></div>
+      <div className={styles.main}>
+        <div className={styles.header}>
+          <Skeleton.Span
+            style={{ maxHeight: "calc(var(--fontSize) * 2)", margin: 0 }}
+          />
+        </div>
+        <div className={styles.top}>
+          <div style={{ paddingBlock: "var(--padding)" }}>
+            <Skeleton.Span
+              style={{
+                maxWidth: "80%",
+                marginTop: "var(--padding)",
+                marginInline: "auto",
+              }}
+            />
+          </div>
+          <Skeleton.Title
+            style={{
+              maxWidth: "80%",
+              marginInline: "auto",
+            }}
+          />
+          <Skeleton.Title style={{ maxWidth: "40%", marginInline: "auto" }} />
+          <Skeleton.Image />
+          <div className={styles.additionalInfo}>
+            <Skeleton.Button />
+            <Skeleton.Span />
+          </div>
+        </div>
+        <div className={styles.content}>
+          <Skeleton.Paragraph />
+        </div>
+      </div>
+      <div>{/* <Articles /> */}</div>
+    </div>
   );
 }
 

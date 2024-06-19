@@ -2,17 +2,16 @@ import React from "react";
 import styles from "./skeleton.module.css";
 import { cn } from "../utils/common";
 
-const Title = () => {
-  return <div className={cn(styles.default, styles.title)}></div>;
-};
+const createSkeletonComponent =
+  (specificClass) =>
+  ({ ...props }) => {
+    return <div className={cn(styles.default, specificClass)} {...props} />;
+  };
 
-const Image = () => {
-  return <div className={cn(styles.default, styles.image)}></div>;
-};
-
-const Span = () => {
-  return <div className={cn(styles.default, styles.span)}></div>;
-};
+const Title = createSkeletonComponent(styles.title);
+const Image = createSkeletonComponent(styles.image);
+const Span = createSkeletonComponent(styles.span);
+const Button = createSkeletonComponent(styles.button);
 
 const Paragraph = ({ lineCount = 3 }) => {
   return (
@@ -27,7 +26,7 @@ const Paragraph = ({ lineCount = 3 }) => {
               styles.paragraph,
               isLast && styles.half
             )}
-          ></div>
+          />
         );
       })}
     </div>
@@ -39,6 +38,7 @@ const Skeleton = {
   Image,
   Span,
   Paragraph,
+  Button,
 };
 
 export default Skeleton;
