@@ -32,3 +32,8 @@ button, input {
   border : 1px solid var(--secondary);
   font-family: inherit;
 }
+
+a {
+  text-decoration: none;
+  color : inherit;
+}

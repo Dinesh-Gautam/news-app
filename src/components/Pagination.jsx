@@ -13,7 +13,7 @@ function Pagination({ maxPages, currentPage, onPageChange }) {
   return (
     <div className={styles.container}>
       <button disabled={currentPage < 1} onClick={() => changePage("prev")}>
-        prev
+        Prev
       </button>
 
       <span>

@@ -3,22 +3,23 @@
     gap : var(--padding);
     padding-top: var(--padding);
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: stretch;
 }
 
 
 .article {
-    --maxWidth : 300px;
+    --maxWidth : calc(var(--mainWidth) / 5);
 
     overflow: hidden;
     border-radius: var(--borderRadius);
-    max-width: var(--maxWidth);
+    width: var(--maxWidth);
     outline: none;
     transform: scale(1);
     transition: all 0.2s ease-in-out;
 }
 
 .article:hover {
+    will-change: transform , box-shadow;
     transform: scale(1.02);
     z-index: 100;
     box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
@@ -38,12 +39,12 @@
 }
 
 .article.banner {
-    min-width : clamp(var(--maxWidth) , 60vw , var(--mainWidth));
+    width : clamp(var(--maxWidth) , 60vw , var(--mainWidth));
     color : var(--primary);
     display: flex;
     contain : layout;
     position: relative;
-    min-height: fit-content;
+    min-height: 30vh;
 }
 
 .article.banner .content {
@@ -56,11 +57,11 @@
 }
 
 .article.banner .content h2 {
-    font-size: calc(var(--font-size) * 1.5);
+    font-size: calc(var(--fontSize) * 1.5);
 }
 
 .article.banner .content p {
-    font-size: calc(var(--font-size));
+    font-size: calc(var(--fontSize));
 }
 
 .article.banner .buttons {
@@ -80,11 +81,11 @@
 }
 
 .article h2 {
-    font-size: calc(var(--font-size) + 2px);
+    font-size: calc(var(--fontSize) + 2px);
 }
 
 .article p, .article span{
-    font-size: calc(var(--font-size) - 2px);
+    font-size: calc(var(--fontSize) - 2px);
 }
 
 .paragraph {

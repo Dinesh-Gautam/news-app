@@ -17505,16 +17505,241 @@ const tempResponse = {
   },
 };
 
+const tempDetailResponse = {
+  8185011524: {
+    info: {
+      uri: "8185011524",
+      lang: "eng",
+      isDuplicate: false,
+      date: "2024-06-19",
+      time: "09:21:55",
+      dateTime: "2024-06-19T09:21:55Z",
+      dateTimePub: "2024-06-19T09:21:14Z",
+      dataType: "news",
+      sim: 0.6745098233222961,
+      url: "https://www.news9live.com/india/legal-bombay-hc-allows-release-of-hamare-baarah-on-june-21-after-makers-agree-to-make-certain-changes-2583514",
+      title:
+        "Bombay HC allows release of 'Hamare Baarah' on June 21 after makers agree to make certain changes",
+      body: 'Mumbai: The Bombay High Court on Wednesday allowed the release of the film "Hamare Baarah" on June 21 after the makers agreed to make certain changes in the movie as suggested by the High Court.\n\nA bench comprising Justice BP Colabawalla and Justice Firdosh Pooniwalla allowed the release of the film after recording the changes to be made in the movie following the suggestion of the High Court and both the parties agreeing to the suggestion.\n\nThe High Court order came on a plea filed by Azhar Basha Tamboli who sought a ban on the film alleging that the film was derogatory to the Islamic faith and married Muslim women.\n\nWhile the petitioner agreed before the High Court to not raise any objection to the release of the movie after the agreed-upon changes are made, the makers of the movie agreed to remove a dialogue and a Quranic verse and put two disclaimers of 12 seconds each in the film, Live Law reported.\n\nThe makers of the film also agreed to pay costs of Rs. 5 lakhs to a charity of the choice of the petitioner.\n\nThe High Court, while hearing the matter on Tuesday, said that the court saw the movie and it did not find anything objectionable against the Quran or the Muslim community in the film. It had further said that the film is in fact aimed at upliftment of women.\n\nThe High Court on Tuesday said that it has some suggestions over a few scenes of the movie which may still be a bit objectionable and if all the parties concerned agree to the deletion of the objectionable parts from the movie then consent terms could be submitted, after which it would pass an order on Wednesday permitting the release of the film.\n\nThe High Court had also said on Tuesday that violation was there vis-a-vis the trailer of the film that was released even when the makers had not received certification from the censor board and it would be imposing a cost on the makers of the film.\n\nThe film was earlier slated to be released on June 7 and then June 14, however, the release of the film on June 14 was stayed by the Supreme till the disposal of the plea filed before the High Court. The apex court asked the High Court to take an expeditious decision on the plea challenging certification of the film.\n\nEarlier, the High Court initially postponed the release of the film, however, it later allowed the release after the makers told the High Court that the objectionable portions as directed by the Central Board for Film Certification (CBFC) would be deleted from the film.',
+      source: {
+        uri: "news9live.com",
+        dataType: "news",
+        title: "News9live",
+      },
+      authors: [
+        {
+          uri: "nitish_k_singh@news9live.com",
+          name: "Nitish K Singh",
+          type: "author",
+          isAgency: false,
+        },
+      ],
+      concepts: [
+        {
+          uri: "http://en.wikipedia.org/wiki/High_Court_of_Justice",
+          type: "wiki",
+          score: 5,
+          label: {
+            eng: "High Court of Justice",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Muslims",
+          type: "loc",
+          score: 3,
+          label: {
+            eng: "Muslims",
+          },
+          location: null,
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Petitioner",
+          type: "wiki",
+          score: 3,
+          label: {
+            eng: "Petitioner",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Al-Azhar_University",
+          type: "org",
+          score: 3,
+          label: {
+            eng: "Al-Azhar University",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Bombay_High_Court",
+          type: "wiki",
+          score: 3,
+          label: {
+            eng: "Bombay High Court",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Quran",
+          type: "wiki",
+          score: 3,
+          label: {
+            eng: "Quran",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Islam",
+          type: "wiki",
+          score: 3,
+          label: {
+            eng: "Islam",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/BP",
+          type: "org",
+          score: 3,
+          label: {
+            eng: "BP",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Mumbai",
+          type: "loc",
+          score: 3,
+          label: {
+            eng: "Mumbai",
+          },
+          location: {
+            type: "place",
+            label: {
+              eng: "Mumbai",
+            },
+            country: {
+              type: "country",
+              label: {
+                eng: "India",
+              },
+            },
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Disclaimer",
+          type: "wiki",
+          score: 2,
+          label: {
+            eng: "Disclaimer",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Ummah",
+          type: "wiki",
+          score: 2,
+          label: {
+            eng: "Ummah",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Charitable_organization",
+          type: "wiki",
+          score: 2,
+          label: {
+            eng: "Charitable organization",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Indian_rupee",
+          type: "wiki",
+          score: 2,
+          label: {
+            eng: "Indian rupee",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Lakh",
+          type: "wiki",
+          score: 2,
+          label: {
+            eng: "Lakh",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Central_Board_of_Film_Certification",
+          type: "wiki",
+          score: 1,
+          label: {
+            eng: "Central Board of Film Certification",
+          },
+        },
+        {
+          uri: "http://en.wikipedia.org/wiki/Supreme_court",
+          type: "wiki",
+          score: 1,
+          label: {
+            eng: "Supreme court",
+          },
+        },
+      ],
+      categories: [
+        {
+          uri: "dmoz/Arts/Movies",
+          label: "dmoz/Arts/Movies",
+          wgt: 41,
+        },
+        {
+          uri: "dmoz/Arts/Movies/Filmmaking",
+          label: "dmoz/Arts/Movies/Filmmaking",
+          wgt: 37,
+        },
+        {
+          uri: "dmoz/Arts/Movies/Organizations",
+          label: "dmoz/Arts/Movies/Organizations",
+          wgt: 36,
+        },
+        {
+          uri: "dmoz/Arts/Movies/Guides",
+          label: "dmoz/Arts/Movies/Guides",
+          wgt: 38,
+        },
+        {
+          uri: "dmoz/Arts/Movies/Theory_and_Criticism",
+          label: "dmoz/Arts/Movies/Theory and Criticism",
+          wgt: 37,
+        },
+        {
+          uri: "news/Arts_and_Entertainment",
+          label: "news/Arts and Entertainment",
+          wgt: 65,
+        },
+      ],
+      videos: [],
+      image:
+        "https://images.news9live.com/wp-content/uploads/2024/06/Hamare-Baarah-film-release-banned-in-Karnataka.jpg",
+      eventUri: "eng-9661935",
+      location: {
+        type: "place",
+        label: {
+          eng: "Mumbai",
+        },
+        country: {
+          type: "country",
+          label: {
+            eng: "India",
+          },
+        },
+      },
+      sentiment: 0.3254901960784313,
+    },
+  },
+};
+
 export function customFetch(endPoint, params) {
-  // return {
-  //   controller: null,
-  //   promise: new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       resolve(tempResponse);
-  //       // reject(error("Network Error"));
-  //     }, 1000);
-  //   }),
-  // };
+  return {
+    controller: null,
+    promise: new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(tempDetailResponse);
+        // reject(error("Network Error"));
+      }, 1000);
+    }),
+  };
 
   const fetchUrl = new URL(endPoint);
   if (params) {

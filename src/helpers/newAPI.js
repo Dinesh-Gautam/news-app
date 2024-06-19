@@ -62,6 +62,10 @@ export function getArticleDetails({ id }) {
   const params = new URLSearchParams({
     articleUri: [id],
     resultType: "info",
+    includeArticleConcepts: true,
+    includeArticleCategories: true,
+    includeArticleLocation: true,
+    includeArticleVideos: true,
     includeArticleImage: true,
     apiKey: defaultQueryParameters.apiKey,
   });

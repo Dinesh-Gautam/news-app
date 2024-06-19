@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { actions, useNewsApi } from "../hooks/useNewsApi";
 import useSearchParamsActions from "../hooks/useSearchParamsActions";
 import { cn, isArrayEmpty } from "../utils/common";
@@ -17,7 +18,7 @@ export function Articles() {
     return <div>Loading...</div>;
   }
 
-  console.log(data);
+  if (!results || isArrayEmpty(results)) return <div>Nothing to show</div>;
 
   return (
     <>
@@ -27,34 +28,38 @@ export function Articles() {
         maxPages={pages}
       />
       <div className={styles.container}>
-        {results && !isArrayEmpty(results) ? (
-          results.map((article, index) => (
-            <Article key={article.uri} isBanner={index === 0} {...article} />
-          ))
-        ) : (
-          <div>Nothing to show</div>
-        )}
+        {results.map((article, index) => (
+          <Article key={article.uri} isBanner={index === 0} {...article} />
+        ))}
       </div>
+      <Pagination
+        onPageChange={(pageNo) => changeParam("page", pageNo)}
+        currentPage={getParam("page") || 1}
+        maxPages={pages}
+      />
     </>
   );
 }
 
-function Article({ title, body, image, date, isBanner }) {
+function Article({ title, body, image, date, isBanner, uri }) {
   return (
     <div>
       <div className={cn(styles.article, isBanner && styles.banner)}>
-        {image && (
-          <div className={styles.imageContainer}>
-            <img loading="lazy" src={image} alt="title" />
+        <Link to={"/detail?id=" + uri}>
+          {image && (
+            <div className={styles.imageContainer}>
+              <img loading="lazy" src={image} alt="title" />
+            </div>
+          )}
+          <div className={styles.content}>
+            <h2>{title}</h2>
+            <span>{date}</span>
+            <div className={styles.paragraph}>
+              <p>{body}</p>
+            </div>
           </div>
-        )}
-        <div className={styles.content}>
-          <h2>{title}</h2>
-          <span>{date}</span>
-          <div className={styles.paragraph}>
-            <p>{body}</p>
-          </div>
-        </div>
+        </Link>
+
         <div className={styles.buttons}>
           <button>Favorite</button>
           <button>Read More</button>

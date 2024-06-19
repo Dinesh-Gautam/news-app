@@ -3,8 +3,8 @@
     --secondaryColor: 0,0,0;
     --primary : rgb(255,255,255);
     --secondary: rgb(0,0,0);
-    --font-size : 14px;
-    --padding : calc(var(--font-size) - 4px);
+    --fontSize : 14px;
+    --padding : calc(var(--fontSize) - 4px);
     --borderRadius : 4px;
     --mainWidth: 1330px;
 }
