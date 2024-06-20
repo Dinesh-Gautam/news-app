@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Articles } from "../components/Articles";
-import { Header } from "../components/Header";
+import { Header } from "../components/header/Header";
 import { ErrorBoundary } from "react-error-boundary";
 import Error from "../components/Error";
 

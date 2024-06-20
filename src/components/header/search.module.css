@@ -1,0 +1,15 @@
+.search {
+    display: flex;
+    border: 1px solid var(--secondary);
+    border-radius: 999px;
+    max-width: 300px;
+}
+
+.search input {
+    flex : 1;
+    min-width: 0;
+}
+
+.search input , .search button {
+    border : none;
+}

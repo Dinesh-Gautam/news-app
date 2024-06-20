@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import styles from "./pagination.module.css";
 import Icons from "./Icons";
+import { getValidPageValue } from "../utils/common";
 
 function Pagination({ maxPages, currentPage, onPageChange }) {
-  const [value, setValue] = useState(currentPage || 1);
+  const [value, setValue] = useState(
+    getValidPageValue(1, currentPage, maxPages) || 1
+  );
+
+  const setStateValue = (value) =>
+    setValue(getValidPageValue(1, value, maxPages));
 
   function changePage(direction) {
-    if (direction === "next") {
-      return onPageChange(parseInt(currentPage) + 1);
-    }
+    if (direction === "next") return onPageChange(value + 1);
 
-    if (direction === "prev") {
-      return onPageChange(parseInt(currentPage) - 1);
-    }
+    if (direction === "prev") return onPageChange(value - 1);
 
-    return onPageChange(parseInt(value));
+    return parseInt(currentPage) !== value && onPageChange(value);
   }
 
   return (
@@ -31,15 +33,11 @@ function Pagination({ maxPages, currentPage, onPageChange }) {
           min={1}
           max={maxPages}
           onBlur={() => changePage()}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              changePage();
-            }
-          }}
-          onChange={(e) => {
-            if (e.target.value > maxPages || e.target.value < 1);
-            setValue(e.target.value);
-          }}
+          onKeyDown={(event) => event.key === "Enter" && changePage()}
+          onChange={(e) =>
+            (e.target.value < maxPages || e.target.value > 1) &&
+            setStateValue(e.target.value)
+          }
           value={value}
         />{" "}
         of {maxPages || 1}

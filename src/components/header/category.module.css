@@ -1,0 +1,21 @@
+.categories {
+    display: flex;
+    gap: var(--padding);
+}
+
+.categories .categoryButton {
+    border-radius: 9999px;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--secondary);
+}
+
+.categories .categoryButton:hover, .categories .categoryButton.active {
+    color : var(--primary);
+    background : var(--secondary);
+}
+
+.categories button {
+    color : inherit;
+    border: none;
+}

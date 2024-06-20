@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticleDetails, getArticles } from "../helpers/newAPI";
+import { getArticleDetails, getArticles } from "../helpers/newApi";
 import useSearchParamsActions from "./useSearchParamsActions";
 
 export const actions = {
@@ -18,7 +18,7 @@ export function useNewsApi(action) {
   const [loading, setLoading] = useState(initialState.LOADING);
   const [error, setError] = useState(initialState.ERROR);
 
-  const { searchParams } = useSearchParamsActions();
+  const { searchParams, getParam } = useSearchParamsActions();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(handleRequest, [searchParams]);
@@ -38,15 +38,15 @@ export function useNewsApi(action) {
     switch (action) {
       case actions.GET_ARTICLES:
         response = getArticles({
-          keyword: searchParams.get("keyword"),
-          category: searchParams.get("category"),
-          page: searchParams.get("page"),
+          keyword: getParam("keyword"),
+          category: getParam("category"),
+          page: getParam("page"),
         });
         break;
 
       case actions.GET_ARTICLE_DETAIL:
         response = getArticleDetails({
-          id: searchParams.get("id"),
+          id: getParam("id"),
         });
         break;
 

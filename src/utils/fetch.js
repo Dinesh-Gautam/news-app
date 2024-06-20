@@ -17737,7 +17737,7 @@ export function customFetch(endPoint, params) {
       setTimeout(() => {
         resolve(tempResponse);
         // reject(error("Network Error"));
-      }, 100);
+      }, 500);
     }),
   };
 

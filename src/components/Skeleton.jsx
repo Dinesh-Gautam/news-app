@@ -13,7 +13,7 @@ const Image = createSkeletonComponent(styles.image);
 const Span = createSkeletonComponent(styles.span);
 const Button = createSkeletonComponent(styles.button);
 
-const Paragraph = ({ lineCount = 3 }) => {
+const Paragraph = ({ lineCount = 3, ...props }) => {
   return (
     <div className={styles.paragraphContainer}>
       {Array.from({ length: lineCount }).map((_, i) => {
@@ -26,6 +26,7 @@ const Paragraph = ({ lineCount = 3 }) => {
               styles.paragraph,
               isLast && styles.half
             )}
+            {...props}
           />
         );
       })}

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import styles from "./error.module.css";
+import { isHomePage } from "../utils/common";
 
 function Error({ message }) {
   const navigate = useNavigate();
@@ -17,10 +18,6 @@ function Error({ message }) {
       </div>
     </div>
   );
-}
-
-function isHomePage() {
-  return window.location.pathname === "/";
 }
 
 export default Error;

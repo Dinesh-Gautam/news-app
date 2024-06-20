@@ -1,10 +1,13 @@
+import {
+  HiOutlineArrowLongLeft,
+  HiOutlineArrowLongRight,
+} from "react-icons/hi2";
+import { IoSearchOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
-import { CiSearch } from "react-icons/ci";
-import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2";
 
 const Icons = {
   Cross: RxCross2,
-  Search: CiSearch,
+  Search: IoSearchOutline,
   Right: HiOutlineArrowLongRight,
   Left: HiOutlineArrowLongLeft,
 };
