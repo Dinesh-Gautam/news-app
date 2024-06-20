@@ -1,25 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./pagination.module.css";
 import Icons from "./Icons";
 
 function Pagination({ maxPages, currentPage, onPageChange }) {
+  const [value, setValue] = useState(currentPage || 1);
+
   function changePage(direction) {
     if (direction === "next") {
-      onPageChange(parseInt(currentPage) + 1);
-    } else if (direction === "prev") {
-      onPageChange(parseInt(currentPage) - 1);
+      return onPageChange(parseInt(currentPage) + 1);
     }
+
+    if (direction === "prev") {
+      return onPageChange(parseInt(currentPage) - 1);
+    }
+
+    return onPageChange(parseInt(value));
   }
 
   return (
     <div className={styles.container}>
-      <button disabled={currentPage < 1} onClick={() => changePage("prev")}>
+      <button disabled={currentPage < 2} onClick={() => changePage("prev")}>
         <Icons.Left />
         <span>Prev</span>
       </button>
 
       <span>
-        Page {currentPage || 1} of {maxPages || 1}
+        Page{" "}
+        <input
+          type="number"
+          min={1}
+          max={maxPages}
+          onBlur={() => changePage()}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              changePage();
+            }
+          }}
+          onChange={(e) => {
+            if (e.target.value > maxPages || e.target.value < 1);
+            setValue(e.target.value);
+          }}
+          value={value}
+        />{" "}
+        of {maxPages || 1}
       </span>
 
       <button
