@@ -9,10 +9,8 @@ import styles from "./articles.module.css";
 
 export function Articles() {
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLES);
-  const { changeParam, getParam } = useSearchParamsActions();
+  const { changeParam } = useSearchParamsActions();
   const { page, pages, results } = data?.articles || {};
-
-  console.log(data);
 
   if (error.error) return <Error message={error.message} />;
 

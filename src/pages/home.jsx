@@ -1,31 +1,28 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Articles } from "../components/Articles";
 import { Header } from "../components/header/Header";
-import { ErrorBoundary } from "react-error-boundary";
+
+import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import Error from "../components/Error";
 
-function Home() {
+export function Component() {
   return (
     <>
       <Header />
       <main>
-        <ErrorBoundary
-          onError={(error, info) => console.error(error, info)}
-          fallback={<Error />}
-        >
-          <Articles />
-        </ErrorBoundary>
+        <Articles />
       </main>
     </>
   );
 }
 
-function LazyHome() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Home />
-    </Suspense>
+export function ErrorBoundary() {
+  let error = useRouteError();
+  return isRouteErrorResponse(error) ? (
+    <h1>
+      <Error message={`${error.status} ${error.statusText}`} />
+    </h1>
+  ) : (
+    <Error />
   );
 }
-
-export default LazyHome;

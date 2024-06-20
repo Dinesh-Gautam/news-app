@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { cn } from "../utils/common";
+import { cn, getFormattedTime } from "../utils/common";
 import styles from "./article.module.css";
 import articlesStyle from "./articles.module.css";
 import Skeleton from "./Skeleton";
+import SeparatedValues from "./utils/SeparatedValues";
 
-export function Article({ title, body, image, date, isBanner, uri }) {
+export function Article({ title, body, image, dateTime, isBanner, uri }) {
   return (
     <div className={cn(styles.article, isBanner && styles.banner)}>
       <Link to={"/detail?id=" + uri}>
@@ -15,7 +16,9 @@ export function Article({ title, body, image, date, isBanner, uri }) {
         )}
         <div className={styles.content}>
           <h2>{title}</h2>
-          <span>{date}</span>
+          <SeparatedValues
+            values={[<span>{getFormattedTime(dateTime)}</span>]}
+          />
           <div className={styles.paragraph}>
             <p>{body}</p>
           </div>

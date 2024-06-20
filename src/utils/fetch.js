@@ -17730,14 +17730,29 @@ const tempDetailResponse = {
   },
 };
 
+/**
+ *  Custom fetch function to mimic network call
+ * @param {string} endPoint - API end point
+ * @param {object} params - url search parameters
+ * @returns {object} - response or error
+ */
 export function customFetch(endPoint, params) {
   return {
     controller: null,
     promise: new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(tempResponse);
+        if (!endPoint) return;
+        if (endPoint.split("/").includes("getArticles")) {
+          resolve(tempResponse);
+        } else {
+          const data = {
+            [parseInt(params.get("articleUri"))]:
+              Object.values(tempDetailResponse)[0],
+          };
+          resolve(data);
+        }
         // reject(error("Network Error"));
-      }, 500);
+      }, 2000);
     }),
   };
 

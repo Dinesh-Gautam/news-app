@@ -6,6 +6,7 @@ import { actions, useNewsApi } from "../hooks/useNewsApi";
 import useSearchParamsActions from "../hooks/useSearchParamsActions";
 import { calculateReadTime, isEmpty } from "../utils/common";
 import styles from "./detail.module.css";
+import SeparatedValues from "./utils/SeparatedValues";
 
 export function Detail() {
   const { getParam } = useSearchParamsActions();
@@ -111,23 +112,25 @@ function Category({ categories }) {
 function Info({ authors, date, body, country }) {
   return (
     <div className={styles.info}>
-      <span>
-        By
-        <span className={styles.authorsName}>
-          {authors.map((a) => a.name).join(", ")}
-        </span>
-      </span>
-      <span> • </span>
-      <span>
-        {new Date(date).toLocaleDateString(undefined, {
-          weekday: undefined,
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })}
-      </span>
-      <span> • </span>
-      <span>{country}</span>
+      <SeparatedValues
+        values={[
+          <span>
+            By
+            <span className={styles.authorsName}>
+              {authors.map((a) => a.name).join(", ")}
+            </span>
+          </span>,
+          <span>
+            {new Date(date).toLocaleDateString(undefined, {
+              weekday: undefined,
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </span>,
+          <span>{country}</span>,
+        ]}
+      />
       <div className={styles.readTime}>
         <span>{calculateReadTime(body)} min Read</span>
       </div>

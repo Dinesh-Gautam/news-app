@@ -2,17 +2,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { StoreProvider } from "./contexts/Store";
 import { lazy } from "react";
 
-const Home = lazy(() => import("./pages/home"));
-const Detail = lazy(() => import("./pages/detail"));
+// const Home = ;
+// const Detail = lazy(() => import("./pages/detail"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    lazy: () => import("./pages/home"),
   },
   {
     path: "/detail",
-    element: <Detail />,
+    lazy: () => import("./pages/detail"),
   },
 ]);
 
