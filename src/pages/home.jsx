@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Articles } from "../components/Articles";
 import { Header } from "../components/Header";
 import { ErrorBoundary } from "react-error-boundary";
@@ -20,4 +20,12 @@ function Home() {
   );
 }
 
-export default Home;
+function LazyHome() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home />
+    </Suspense>
+  );
+}
+
+export default LazyHome;

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { Suspense, useMemo } from "react";
 import { actions, useNewsApi } from "../hooks/useNewsApi";
 import useSearchParamsActions from "../hooks/useSearchParamsActions";
 import { calculateReadTime } from "../utils/common";
@@ -19,7 +19,7 @@ function Detail() {
   if (Object.keys(data).length === 0) return <Nothing />;
 
   const { title, body, image, categories, authors, date, location, source } =
-    data && data[parseInt(getParam("id"))].info;
+    data && data[parseInt(getParam("id"))]?.info;
 
   return (
     <ErrorBoundary
@@ -145,4 +145,12 @@ function Info({ authors, date, body, country }) {
   );
 }
 
-export default Detail;
+function lazyDetail() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Detail />
+    </Suspense>
+  );
+}
+
+export default lazyDetail;

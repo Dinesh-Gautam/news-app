@@ -1,9 +1,11 @@
-import Home from "./pages/home";
 import "./styles/App.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { StoreProvider } from "./contexts/Store";
-import Detail from "./pages/detail";
+import { lazy } from "react";
+
+const Home = lazy(() => import("./pages/home"));
+const Detail = lazy(() => import("./pages/detail"));
 
 const router = createBrowserRouter([
   {

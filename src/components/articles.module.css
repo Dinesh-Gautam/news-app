@@ -3,7 +3,7 @@
     gap : var(--padding);
     padding-top: var(--padding);
     flex-wrap: wrap;
-    justify-content: stretch;
+    justify-content: center;
     align-items: flex-start;
 }
 
