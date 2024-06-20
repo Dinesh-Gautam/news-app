@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./pagination.module.css";
+import Icons from "./Icons";
 
 function Pagination({ maxPages, currentPage, onPageChange }) {
   function changePage(direction) {
@@ -13,7 +14,8 @@ function Pagination({ maxPages, currentPage, onPageChange }) {
   return (
     <div className={styles.container}>
       <button disabled={currentPage < 1} onClick={() => changePage("prev")}>
-        Prev
+        <Icons.Left />
+        <span>Prev</span>
       </button>
 
       <span>
@@ -24,7 +26,8 @@ function Pagination({ maxPages, currentPage, onPageChange }) {
         disabled={currentPage >= maxPages}
         onClick={() => changePage("next")}
       >
-        Next
+        <span>Next</span>
+        <Icons.Right />
       </button>
     </div>
   );

@@ -16,14 +16,11 @@
     max-height: min-content;
     flex-grow: 1;
     outline: none;
-    transform: scale(1);
     transition: all 0.2s ease-in-out;
 }
 
 .article:hover {
     will-change: transform , box-shadow;
-    transform: scale(1.02);
-    z-index: 100;
     box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
 }
 
@@ -70,9 +67,11 @@
     display: none;
 }
 
-.content p , .content span {
-    filter : opacity(0.8);
+.content span {
+    font-size: calc(var(--fontSize) - 4px) !important; 
+    opacity: 0.7;
 }
+
 
 .content p , .content h2 {
     line-height: 120%;

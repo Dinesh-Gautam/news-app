@@ -2,6 +2,8 @@ import { useState } from "react";
 import useSearchParamsActions from "../hooks/useSearchParamsActions";
 
 import styles from "./header.module.css";
+import { cn } from "../utils/common";
+import Icons from "./Icons";
 
 export function Header() {
   return (
@@ -47,10 +49,14 @@ const categories = [
 ];
 
 function CategoryList() {
-  const { changeParam, getParam } = useSearchParamsActions();
+  const { changeParam, getParam, deleteParam } = useSearchParamsActions();
 
   function categoryClickHandler(category) {
     changeParam("category", category);
+  }
+
+  function categoryRemoveClickHandler(category) {
+    deleteParam("category");
   }
 
   function isActive(uri) {
@@ -60,13 +66,18 @@ function CategoryList() {
   return (
     <div className={styles.categories}>
       {categories.map(({ uri, label }) => (
-        <button
-          className={isActive(uri) ? styles.active : ""}
-          onClick={() => categoryClickHandler(uri)}
-          key={uri}
+        <div
+          className={cn(styles.categoryButton, isActive(uri) && styles.active)}
         >
-          {label}
-        </button>
+          <button onClick={() => categoryClickHandler(uri)} key={uri}>
+            {label}
+          </button>
+          {isActive(uri) && (
+            <button onClick={() => categoryRemoveClickHandler()}>
+              <Icons.Cross fontSize="medium" />
+            </button>
+          )}
+        </div>
       ))}
     </div>
   );
@@ -94,7 +105,9 @@ function Search() {
         type="text"
         placeholder="Search Keyword"
       />
-      <button type="submit">Go</button>
+      <button type="submit">
+        <Icons.Search fontSize="medium" />
+      </button>
     </form>
   );
 }

@@ -8,6 +8,7 @@
     padding-inline: var(--padding);
     padding-bottom: calc(var(--padding) * 2 );
     border-bottom : 1px solid var(--secondary);
+    overflow: auto;
 }
 
 .container h1{
@@ -16,30 +17,36 @@
 
 .categories {
     display: flex;
-    flex-wrap: wrap;
     gap: var(--padding);
-    flex : 0;
+}
+
+.categories .categoryButton {
+    border-radius: 9999px;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--secondary);
+}
+
+.categories .categoryButton:hover, .categories .categoryButton.active {
+    color : var(--primary);
+    background : var(--secondary);
 }
 
 .categories button {
-    border-radius: 9999px;
-    transition: all 0.2s ease-in-out;
-}
-
-.categories button:hover, .categories button.active {
-    color : var(--primary);
-    background : var(--secondary);
+    color : inherit;
+    border: none;
 }
 
 .search {
     display: flex;
     border: 1px solid var(--secondary);
     border-radius: 999px;
-    min-width: 200px;
+    max-width: 300px;
 }
 
 .search input {
     flex : 1;
+    min-width: 0;
 }
 
 .search input , .search button {

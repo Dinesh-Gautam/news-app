@@ -5,6 +5,11 @@
     align-items: center;
     justify-items: center;
     padding-block: var(--padding);
+    gap: var(--padding);
+}
+
+.container span {
+    white-space: nowrap;
 }
 
 .container button {
@@ -14,4 +19,15 @@
 .container button:disabled {
     pointer-events: none;
     opacity: 0.2;
+}
+
+@media  (max-width: 400px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows : 1fr 1fr;
+    }
+    .container span {
+        grid-row: 1/2;
+        grid-column: 1/-1;
+    }
 }

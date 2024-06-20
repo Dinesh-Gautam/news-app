@@ -33,6 +33,14 @@ main {
 
 button {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap : var(--padding);
+}
+
+button svg {
+  font-size: medium;
 }
 
 button, input {
