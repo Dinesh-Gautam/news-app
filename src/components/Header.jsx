@@ -85,8 +85,13 @@ function CategoryList() {
 }
 
 function Search() {
-  const { changeParam, getParam } = useSearchParamsActions();
+  const { changeParam, getParam, deleteParam } = useSearchParamsActions();
   const [value, setValue] = useState(getParam("keyword") || "");
+
+  function keywordRemoveClickHandler() {
+    setValue("");
+    deleteParam("keyword");
+  }
 
   function keywordClickHandler(keyword) {
     if (keyword) changeParam("keyword", keyword);
@@ -106,6 +111,11 @@ function Search() {
         type="text"
         placeholder="Search Keyword"
       />
+      {value && (
+        <button type="button" onClick={() => keywordRemoveClickHandler()}>
+          <Icons.Cross fontSize="medium" />
+        </button>
+      )}
       <button type="submit">
         <Icons.Search fontSize="medium" />
       </button>
