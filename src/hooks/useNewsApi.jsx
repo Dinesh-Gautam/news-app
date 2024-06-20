@@ -63,7 +63,7 @@ export function useNewsApi(action) {
         .catch((error) => setError({ error: true, ...error }))
         .finally(() => setLoading(false));
 
-      return () => controller && controller.abort();
+      return () => controller?.abort();
     }
   }
 
