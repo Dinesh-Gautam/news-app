@@ -67,6 +67,7 @@ function CategoryList() {
     <div className={styles.categories}>
       {categories.map(({ uri, label }) => (
         <div
+          key={uri}
           className={cn(styles.categoryButton, isActive(uri) && styles.active)}
         >
           <button onClick={() => categoryClickHandler(uri)} key={uri}>

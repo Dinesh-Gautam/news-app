@@ -12,6 +12,8 @@ function Detail() {
   const { getParam } = useSearchParamsActions();
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLE_DETAIL);
 
+  console.log(data);
+
   if (error.error) return <Error message={error.message} />;
 
   if (loading || !data) return <SkeletonLoading />;
@@ -22,41 +24,36 @@ function Detail() {
     data && data[parseInt(getParam("id"))]?.info;
 
   return (
-    <ErrorBoundary
-      onError={(error, info) => console.error(error, info)}
-      fallback={<Error />}
-    >
-      <div className={styles.container}>
-        <div></div>
-        <div className={styles.main}>
-          <div className={styles.header}>
-            <Category categories={categories} />
-          </div>
-          <div className={styles.top}>
-            <Info
-              authors={authors}
-              date={date}
-              body={body}
-              country={location.country.label.eng}
-            />
-            <h1>{title}</h1>
-            {image && (
-              <div className={styles.imageContainer}>
-                <img loading="lazy" src={image} alt={title} />
-              </div>
-            )}
-            <div className={styles.additionalInfo}>
-              <button>Add to Favorite</button>
-              <a href={"https://" + source.uri}>Source</a>
+    <div className={styles.container}>
+      <div></div>
+      <div className={styles.main}>
+        <div className={styles.header}>
+          <Category categories={categories} />
+        </div>
+        <div className={styles.top}>
+          <Info
+            authors={authors}
+            date={date}
+            body={body}
+            country={location.country.label.eng}
+          />
+          <h1>{title}</h1>
+          {image && (
+            <div className={styles.imageContainer}>
+              <img loading="lazy" src={image} alt={title} />
             </div>
-          </div>
-          <div className={styles.content}>
-            <p>{body}</p>
+          )}
+          <div className={styles.additionalInfo}>
+            <button>Add to Favorite</button>
+            <a href={"https://" + source.uri}>Source</a>
           </div>
         </div>
-        <div>{/* <Articles /> */}</div>
+        <div className={styles.content}>
+          <p>{body}</p>
+        </div>
       </div>
-    </ErrorBoundary>
+      <div>{/* <Articles /> */}</div>
+    </div>
   );
 }
 
@@ -148,7 +145,12 @@ function Info({ authors, date, body, country }) {
 function lazyDetail() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Detail />
+      <ErrorBoundary
+        onError={(error, info) => console.error(error, info)}
+        fallback={<Error />}
+      >
+        <Detail />
+      </ErrorBoundary>
     </Suspense>
   );
 }
