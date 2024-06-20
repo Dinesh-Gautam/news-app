@@ -7,5 +7,5 @@
 }
 
 .message {
-    font-size: calc(var(--fontSize) * 2);
+    font-size: var(--font-size-xll);
 }   

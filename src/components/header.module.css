@@ -6,7 +6,7 @@
     justify-content: space-between;
     margin-bottom: var(--padding);
     padding-inline: var(--padding);
-    padding-bottom: calc(var(--padding) * 2 );
+    padding-bottom: var(--padding-xll);
     border-bottom : 1px solid var(--secondary);
     overflow: auto;
 }

@@ -1,12 +1,35 @@
 :root {
-    --primaryColor : 255,255,255;
-    --secondaryColor: 0,0,0;
-    --primary : rgb(255,255,255);
-    --secondary: rgb(0,0,0);
+    /* vars */
+    --primary-color : 255,255,255;
+    --secondary-color: 0,0,0;
+
+    /* colors */
+    --primary : rgb(var(--primary-color));
+    --secondary: rgb(var(--secondary-color));
     --error : rgb(255, 0 , 0);
-    --lightGrey : #DDDBDD;
-    --fontSize : 14px;
-    --padding : calc(var(--fontSize) - 4px);
-    --borderRadius : 4px;
-    --mainWidth: 1330px;
+    --light-grey : #DDDBDD;
+
+    /* fonts */
+    --font-size : 14px;
+
+    --font-size-vsm : calc(var(--font-size) - 4px);
+    --font-size-sm : calc(var(--font-size) - 2px);
+    --font-size-md : calc(var(--font-size) + 2px);
+    --font-size-lg : calc(var(--font-size) + 4px);
+    --font-size-xl : calc(var(--font-size) * 1.5);
+    --font-size-xll : calc(var(--font-size) * 2);
+
+    /* sizing */
+    --padding : calc(var(--font-size) - 6px);
+
+    --padding-sm : calc(var(--padding) - 4px);
+    --padding-md : calc(var(--padding) + 2px);
+    --padding-lg : calc(var(--padding) + 4px);
+    --padding-xl : calc(var(--padding) * 1.5);
+    --padding-xll : calc(var(--padding) * 2);
+
+    /* border */
+    --border-radius : 4px;
+    
+    --main-width: 1330px;
 }

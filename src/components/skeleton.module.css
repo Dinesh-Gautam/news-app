@@ -1,13 +1,14 @@
 
 .default {
-    --height : var(--fontSize);
+    --height : var(--font-size);
+
     width: 100%;
     height : var(--height);
     margin-bottom: calc(var(--padding) / 1.5);
-    border-radius: var(--borderRadius);
+    border-radius: var(--border-radius);
     position: relative;
     overflow: hidden;
-    background-color: var(--lightGrey);
+    background-color: var(--light-grey);
     contain: paint;
     isolation: isolate;
 }
@@ -19,7 +20,11 @@
     bottom: 0;
     left: 0;
     transform: translateX(-100%);
-    background: linear-gradient(90deg , rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(90deg,
+     rgba(255, 255, 255, 0) 0%,
+     rgba(255, 255, 255, 0.2) 20%,
+     rgba(255, 255, 255, 0.5) 60%,
+     rgba(255, 255, 255, 0) 100%);
     animation: shimmer 2s infinite;
     content: '';
   }
@@ -53,7 +58,7 @@
 .button {
     border-radius: 999px;
     max-width: 10%;
-    padding : calc(var(--padding) * 1.5);
+    padding : var(--padding-xl);
 }
 
 .paragraph.half {

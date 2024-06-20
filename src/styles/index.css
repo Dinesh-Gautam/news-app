@@ -22,7 +22,7 @@ body {
 }
 
 main {
-  max-width: var(--mainWidth);
+  max-width: var(--main-width);
   margin: auto;
 }
 
@@ -44,7 +44,7 @@ button svg {
 }
 
 button, input {
-  padding : calc(var(--padding) - 4px) calc(var(--padding) + 4px);
+  padding : var(--padding) var(--padding-xll);
   border: none;
   outline: none;
   background:none;
