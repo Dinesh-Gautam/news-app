@@ -1,4 +1,5 @@
-import { FAVORITE_LS_KEY, saveToLocalStorage } from "../utils/localStorage";
+import { FAVORITE_LS_KEY } from "../constants";
+import { saveToLocalStorage } from "../utils/localStorage";
 
 const localStorageMiddleware = (store) => (next) => (action) => {
   const result = next(action);

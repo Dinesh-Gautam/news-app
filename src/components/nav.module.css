@@ -1,0 +1,28 @@
+.nav {
+    position: relative;
+    background : var(--secondary);
+    color : var(--primary);
+    padding : var(--padding-lg) var(--padding-xll);
+    bottom : var(--padding);
+    right : var(--padding);
+    width : calc(100% + var(--padding-xll));
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap : var(--padding-xll);
+}
+
+.nav ul li {
+    text-transform: uppercase;
+    font-size: var(--font-size-sm);
+}
+
+.nav a {
+    border-bottom : 1px solid transparent;
+}
+
+.nav a:hover ,.nav a:active {
+    border-bottom : 1px solid white;
+}

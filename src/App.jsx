@@ -1,16 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { PATHS } from "./constants";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: PATHS.HOME,
     lazy: () => import("./pages/home"),
   },
   {
-    path: "/detail",
+    path: PATHS.DETAIL,
     lazy: () => import("./pages/detail"),
   },
   {
-    path: "/favorites",
+    path: PATHS.FAVORITES,
     lazy: () => import("./pages/favorites"),
   },
 ]);

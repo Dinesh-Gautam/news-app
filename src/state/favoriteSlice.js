@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { FAVORITE_LS_KEY, getFromLocalStorage } from "../utils/localStorage";
+import { getFromLocalStorage } from "../utils/localStorage";
+import { FAVORITE_LS_KEY } from "../constants";
 
 const initialState = getFromLocalStorage(FAVORITE_LS_KEY) ?? {};
 

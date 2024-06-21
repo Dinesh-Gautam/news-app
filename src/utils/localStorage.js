@@ -1,5 +1,3 @@
-export const FAVORITE_LS_KEY = "favorites";
-
 export function getFromLocalStorage(key) {
   const data = localStorage.getItem(key);
   return data && JSON.parse(data);
