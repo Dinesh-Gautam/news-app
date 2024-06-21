@@ -8,6 +8,8 @@ import { calculateReadTime, isEmpty } from "../utils/common";
 import styles from "./detail.module.css";
 import SeparatedValues from "./utils/SeparatedValues";
 import useFavorite from "../hooks/useFavorite";
+import { Layout } from "./Layout";
+import { Articles } from "./Articles";
 
 export function Detail() {
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLE_DETAIL);
@@ -22,7 +24,7 @@ export function Detail() {
   const article = data && data[parseInt(getParam("id"))]?.info;
 
   return (
-    <div className={styles.container}>
+    <Layout.GridContainer className={styles.container}>
       <div></div>
       <div className={styles.main}>
         {!isEmpty(article.categories) && (
@@ -52,7 +54,7 @@ export function Detail() {
           <p>{article.body}</p>
         </div>
       </div>
-    </div>
+    </Layout.GridContainer>
   );
 }
 
@@ -123,7 +125,7 @@ function Info({ authors, date, body, location }) {
 
 function SkeletonLoading() {
   return (
-    <div className={styles.container}>
+    <Layout.GridContainer>
       <div></div>
       <div className={styles.main}>
         <div className={styles.header}>
@@ -158,6 +160,6 @@ function SkeletonLoading() {
           <Skeleton.Paragraph />
         </div>
       </div>
-    </div>
+    </Layout.GridContainer>
   );
 }

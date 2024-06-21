@@ -6,3 +6,9 @@
     justify-content: center;
     align-items: flex-start;
 }
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr minmax( 0 , calc(var(--main-width) / 2)) 1fr;
+    gap : var(--padding-xl);
+}
