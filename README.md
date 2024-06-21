@@ -1,6 +1,12 @@
+# Demo
+
+https://news-app-react-52.netlify.app/
+
 # Required `.env` file
 
-`REACT_APP_NEWS_API_KEY=`get api key from [news API](https://www.newsapi.ai/)
+\*_.env is public_
+
+`REACT_APP_NEWS_API_KEY= `get api key from [news API](https://www.newsapi.ai/)
 
 # Getting Started with Create React App
 
