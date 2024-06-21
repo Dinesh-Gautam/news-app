@@ -3,7 +3,7 @@ import { cn } from "../../utils/common";
 import Icons from "../Icons";
 import styles from "./category.module.css";
 
-const categories = [
+const CATEGORIES = [
   {
     label: "Entertainment",
     uri: "news/Arts_and_Entertainment",
@@ -51,7 +51,7 @@ export function CategoryList() {
 
   return (
     <div className={styles.categories}>
-      {categories.map(({ uri, label }) => (
+      {CATEGORIES.map(({ uri, label }) => (
         <div
           key={uri}
           className={cn(styles.categoryButton, isActive(uri) && styles.active)}

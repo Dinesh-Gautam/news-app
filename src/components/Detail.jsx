@@ -2,14 +2,13 @@ import React, { useMemo } from "react";
 import Error from "../components/Error";
 import Nothing from "../components/Nothing";
 import Skeleton from "../components/Skeleton";
+import useFavorite from "../hooks/useFavorite";
 import { actions, useNewsApi } from "../hooks/useNewsApi";
 import useSearchParamsActions from "../hooks/useSearchParamsActions";
 import { calculateReadTime, isEmpty } from "../utils/common";
+import { Layout } from "./Layout";
 import styles from "./detail.module.css";
 import SeparatedValues from "./utils/SeparatedValues";
-import useFavorite from "../hooks/useFavorite";
-import { Layout } from "./Layout";
-import { Articles } from "./Articles";
 
 export function Detail() {
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLE_DETAIL);
