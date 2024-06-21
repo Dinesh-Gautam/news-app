@@ -1,10 +1,5 @@
-import { NEWS_API_KEY } from "../constants";
+import { NEWS_API_KEY, ENDPOINTS } from "../constants";
 import { customFetch } from "../utils/fetch";
-
-const endPoints = {
-  GET_ARTICLE_DETAIL: `https://www.newsapi.ai/api/v1/article/getArticle`,
-  GET_ARTICLES: `https://www.newsapi.ai/api/v1/article/getArticles`,
-};
 
 const defaultQueryParameters = {
   apiKey: NEWS_API_KEY,
@@ -65,7 +60,7 @@ export function getArticles({ keyword, category, page }) {
     query: JSON.stringify(query),
   });
 
-  return customFetch(endPoints.GET_ARTICLES, params);
+  return customFetch(ENDPOINTS.GET_ARTICLES, params);
 }
 
 /**
@@ -87,5 +82,5 @@ export function getArticleDetails({ id }) {
     apiKey: defaultQueryParameters.apiKey,
   });
 
-  return customFetch(endPoints.GET_ARTICLE_DETAIL, params);
+  return customFetch(ENDPOINTS.GET_ARTICLE_DETAIL, params);
 }

@@ -20,3 +20,12 @@ export const PATHS = {
  * LOCAL STORAGE KEYS
  */
 export const FAVORITE_LS_KEY = "favorites";
+
+/**
+ * END POINTS
+ */
+export const ENDPOINTS = {
+  PROXY: `https://www.newsapi.ai/api/v1/proxy`,
+  GET_ARTICLE_DETAIL: `https://www.newsapi.ai/api/v1/article/getArticle`,
+  GET_ARTICLES: `https://www.newsapi.ai/api/v1/article/getArticles`,
+};
