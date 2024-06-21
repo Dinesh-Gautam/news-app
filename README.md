@@ -1,6 +1,6 @@
 # Required `.env` file
 
-`REACT_APP_NEWS_API_KEY=get api key from [news API](https://www.newsapi.ai/)`
+`REACT_APP_NEWS_API_KEY=`get api key from [news API](https://www.newsapi.ai/)
 
 # Getting Started with Create React App
 
