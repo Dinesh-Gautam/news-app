@@ -1,3 +1,9 @@
+# Required `.env` file
+
+`
+REACT_APP_NEWS_API_KEY=`get api key from [news API](https://www.newsapi.ai/).`
+`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
