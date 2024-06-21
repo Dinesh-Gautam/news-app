@@ -1,10 +1,10 @@
 import React from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
-import { Detail } from "../components/Detail";
 import Error from "../components/Error";
+import Favorites from "../components/Favorites";
 
 export function Component() {
-  return <Detail />;
+  return <Favorites />;
 }
 
 export function ErrorBoundary() {

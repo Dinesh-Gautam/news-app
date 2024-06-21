@@ -19,9 +19,7 @@ export function Component() {
 export function ErrorBoundary() {
   let error = useRouteError();
   return isRouteErrorResponse(error) ? (
-    <h1>
-      <Error message={`${error.status} ${error.statusText}`} />
-    </h1>
+    <Error message={`${error.status} ${error.statusText}`} />
   ) : (
     <Error />
   );

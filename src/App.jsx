@@ -1,9 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { StoreProvider } from "./contexts/Store";
-import { lazy } from "react";
-
-// const Home = ;
-// const Detail = lazy(() => import("./pages/detail"));
 
 const router = createBrowserRouter([
   {
@@ -14,14 +9,14 @@ const router = createBrowserRouter([
     path: "/detail",
     lazy: () => import("./pages/detail"),
   },
+  {
+    path: "/favorites",
+    lazy: () => import("./pages/favorites"),
+  },
 ]);
 
 function App() {
-  return (
-    <StoreProvider>
-      <RouterProvider router={router} />
-    </StoreProvider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

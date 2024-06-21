@@ -7,6 +7,7 @@ import useSearchParamsActions from "../hooks/useSearchParamsActions";
 import { calculateReadTime, isEmpty } from "../utils/common";
 import styles from "./detail.module.css";
 import SeparatedValues from "./utils/SeparatedValues";
+import useFavorite from "../hooks/useFavorite";
 
 export function Detail() {
   const { getParam } = useSearchParamsActions();
@@ -42,7 +43,7 @@ export function Detail() {
             </div>
           )}
           <div className={styles.additionalInfo}>
-            <button>Add to Favorite</button>
+            <FavoriteButton data={data} />
             <a href={"https://" + source.uri}>Source</a>
           </div>
         </div>
@@ -53,6 +54,21 @@ export function Detail() {
     </div>
   );
 }
+
+function FavoriteButton(data) {
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorite();
+  const { getParam } = useSearchParamsActions();
+  const id = parseInt(getParam("id"));
+
+  return isFavorite(id) ? (
+    <button onClick={() => removeFromFavorites(id)}>
+      Remove from Favorites
+    </button>
+  ) : (
+    <button onClick={() => addToFavorites(id, data)}>Add to Favorites</button>
+  );
+}
+
 function SkeletonLoading() {
   return (
     <div className={styles.container}>
@@ -93,6 +109,7 @@ function SkeletonLoading() {
     </div>
   );
 }
+
 function Category({ categories }) {
   const category = useMemo(
     () =>
