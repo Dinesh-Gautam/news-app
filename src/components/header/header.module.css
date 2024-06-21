@@ -6,11 +6,7 @@
     justify-content: space-between;
     margin-bottom: var(--padding);
     padding-inline: var(--padding);
-    padding-bottom: var(--padding-xll);
+    padding-bottom: var(--padding-md);
     border-bottom : 1px solid var(--secondary);
     overflow: auto;
-}
-
-.container h1{
-    margin-bottom: var(--padding);
 }

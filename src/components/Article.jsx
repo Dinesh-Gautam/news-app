@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { cn, getFormattedTime } from "../utils/common";
-import styles from "./article.module.css";
-import articlesStyle from "./articles.module.css";
+import { Layout } from "./Layout";
 import Skeleton from "./Skeleton";
+import styles from "./article.module.css";
 import SeparatedValues from "./utils/SeparatedValues";
 
 export function Article({ title, body, image, dateTime, isBanner, uri }) {
@@ -30,12 +30,12 @@ export function Article({ title, body, image, dateTime, isBanner, uri }) {
 
 export function SkeletonLoading() {
   return (
-    <div className={articlesStyle.container}>
+    <Layout.FlexContainer>
       <SkeletonLoadingArticleTemplate banner />
       {Array.from({ length: 10 }, (_, i) => (
         <SkeletonLoadingArticleTemplate key={i} />
       ))}
-    </div>
+    </Layout.FlexContainer>
   );
 }
 

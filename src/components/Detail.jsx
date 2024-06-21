@@ -19,36 +19,35 @@ export function Detail() {
 
   if (isEmpty(data)) return <Nothing />;
 
-  const { title, body, image, categories, authors, date, location, source } =
-    data && data[parseInt(getParam("id"))]?.info;
+  const article = data && data[parseInt(getParam("id"))]?.info;
 
   return (
     <div className={styles.container}>
       <div></div>
       <div className={styles.main}>
         <div className={styles.header}>
-          <Category categories={categories} />
+          <Category categories={article.categories} />
         </div>
         <div className={styles.top}>
           <Info
-            authors={authors}
-            date={date}
-            body={body}
-            country={location.country.label.eng}
+            authors={article.authors}
+            date={article.date}
+            body={article.body}
+            country={article.location.country.label.eng}
           />
-          <h1>{title}</h1>
-          {image && (
+          <h1>{article.title}</h1>
+          {article.image && (
             <div className={styles.imageContainer}>
-              <img loading="lazy" src={image} alt={title} />
+              <img loading="lazy" src={article.image} alt={article.title} />
             </div>
           )}
           <div className={styles.additionalInfo}>
-            <FavoriteButton data={data} />
-            <a href={"https://" + source.uri}>Source</a>
+            <FavoriteButton data={article} />
+            <a href={"https://" + article.source.uri}>Source</a>
           </div>
         </div>
         <div className={styles.content}>
-          <p>{body}</p>
+          <p>{article.body}</p>
         </div>
       </div>
     </div>

@@ -1,10 +1,12 @@
 
 .article {
-    --max-width : calc(var(--main-width) / 5);
-
+    --width : calc(var(--main-width) / 5);
+    --max-width : calc(var(--main-width) / 4);
+    
     overflow: hidden;
     border-radius: var(--border-radius);
-    width: var(--max-width);
+    width: var(--width);
+    max-width: var(--max-width);
     flex-grow: 1;
     transition: box-shadow 0.2s ease-in-out;
 }
@@ -35,7 +37,8 @@
 }
 
 .article.banner {
-    width : clamp(calc(var(--max-width) * 2), 50vw , var(--main-width));
+    width : clamp(calc(var(--width) * 2), 50vw , var(--main-width));
+    max-width: var(--main-width);
     color : var(--primary);
     contain : layout;
     position: relative;

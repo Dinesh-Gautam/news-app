@@ -1,4 +1,4 @@
-.container {
+.flexContainer {
     display: flex;
     gap : var(--padding);
     padding-top: var(--padding);

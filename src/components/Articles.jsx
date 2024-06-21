@@ -3,9 +3,9 @@ import useSearchParamsActions from "../hooks/useSearchParamsActions";
 import { isEmpty } from "../utils/common";
 import { Article, SkeletonLoading } from "./Article";
 import Error from "./Error";
+import { Layout } from "./Layout";
 import Nothing from "./Nothing";
 import Pagination from "./Pagination";
-import styles from "./articles.module.css";
 
 export function Articles() {
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLES);
@@ -25,11 +25,11 @@ export function Articles() {
         currentPage={page}
         maxPages={pages}
       />
-      <div className={styles.container}>
+      <Layout.FlexContainer>
         {results.map((article, index) => (
           <Article key={article.uri} isBanner={index === 0} {...article} />
         ))}
-      </div>
+      </Layout.FlexContainer>
       <Pagination
         onPageChange={(pageNo) => changeParam("page", pageNo)}
         currentPage={page}
