@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticleDetails, getArticles } from "../helpers/newApi";
+import { getArticleDetails, getArticles } from "../helpers/newsApi";
 import useSearchParamsActions from "./useSearchParamsActions";
 
 export const actions = {
