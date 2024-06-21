@@ -52,7 +52,7 @@ export function getArticles({ keyword, category, page }) {
 
   const params = new URLSearchParams({
     ...defaultQueryParameters,
-    articlesPage: page || 2,
+    articlesPage: page || 1,
     query: JSON.stringify(query),
   });
 

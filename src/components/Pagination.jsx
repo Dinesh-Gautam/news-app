@@ -5,7 +5,7 @@ import { getValidPageValue } from "../utils/common";
 
 function Pagination({ maxPages, currentPage, onPageChange }) {
   const [value, setValue] = useState(
-    getValidPageValue(1, currentPage, maxPages) || 1
+    getValidPageValue(1, currentPage || 1, maxPages)
   );
 
   const setStateValue = (value) =>
