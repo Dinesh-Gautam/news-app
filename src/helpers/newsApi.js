@@ -20,6 +20,15 @@ const defaultQueryParameters = {
   resultType: "articles",
 };
 
+/**
+ * Fetches articles based on the provided keyword, category, and page number.
+ *
+ * @param {Object} options - Options for fetching articles.
+ * @param {string} [options.keyword] - Keyword to search for in article titles.
+ * @param {string} [options.category] - Category URI to filter articles by category.
+ * @param {number} [options.page] - Page number for pagination.
+ * @returns {Promise} - Promise representing the fetched articles.
+ */
 export function getArticles({ keyword, category, page }) {
   const query = {
     $query: {
@@ -59,6 +68,13 @@ export function getArticles({ keyword, category, page }) {
   return customFetch(endPoints.GET_ARTICLES, params);
 }
 
+/**
+ * Fetches details of an article based on the provided article ID.
+ *
+ * @param {Object} options - Options for fetching article details.
+ * @param {string} options.id - uri of the article to fetch details for.
+ * @returns {Promise} - Promise representing the fetched article details.
+ */
 export function getArticleDetails({ id }) {
   const params = new URLSearchParams({
     articleUri: [id],
