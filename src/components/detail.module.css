@@ -60,6 +60,7 @@
     border-bottom: 1px solid var(--secondary);
     gap: var(--padding);
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .content {

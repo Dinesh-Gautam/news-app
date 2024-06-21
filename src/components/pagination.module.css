@@ -9,6 +9,7 @@
 }
 
 .container span {
+    font-size: var(--font-size);
     white-space: nowrap;
 }
 
@@ -21,7 +22,7 @@
     opacity: 0.2;
 }
 
-@media  (max-width: 400px) {
+@media  (max-width: 300px) {
     .container {
         grid-template-columns: 1fr 1fr;
         grid-template-rows : 1fr 1fr;
@@ -31,3 +32,4 @@
         grid-column: 1/-1;
     }
 }
+

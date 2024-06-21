@@ -1,3 +1,4 @@
+import { NEWS_API_KEY } from "../constants";
 import { customFetch } from "../utils/fetch";
 
 const endPoints = {
@@ -6,7 +7,7 @@ const endPoints = {
 };
 
 const defaultQueryParameters = {
-  apiKey: "4271398c-d71a-4b4f-b294-0796541a1384",
+  apiKey: NEWS_API_KEY,
   articleBodyLen: "300",
   articlesConceptLang: "eng",
   articlesCount: "100",

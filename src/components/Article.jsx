@@ -41,17 +41,18 @@ export function SkeletonLoading() {
 
 function SkeletonLoadingArticleTemplate({ banner }) {
   return (
-    <div style={{ pointerEvents: "none" }}>
-      <div className={cn(styles.article, banner && styles.banner)}>
-        <div className={styles.imageContainer}>
-          <Skeleton.Image />
-        </div>
-        {!banner && (
-          <div className={styles.content}>
-            <Skeleton.Paragraph />
-          </div>
-        )}
+    <div
+      style={{ pointerEvents: "none" }}
+      className={cn(styles.article, banner && styles.banner)}
+    >
+      <div className={styles.imageContainer}>
+        <Skeleton.Image />
       </div>
+      {!banner && (
+        <div className={styles.content}>
+          <Skeleton.Paragraph />
+        </div>
+      )}
     </div>
   );
 }

@@ -131,7 +131,7 @@ function Info({ authors, date, body, country }) {
       <SeparatedValues
         values={[
           <span>
-            By
+            By{" "}
             <span className={styles.authorsName}>
               {authors.map((a) => a.name).join(", ")}
             </span>

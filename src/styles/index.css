@@ -52,9 +52,20 @@ button, input {
   font-family: inherit;
   border-radius: 999px;
   transition : box-shadow 0.2s ease-in-out;
+  font-size: var(--font-size);
 }
 
 a {
   text-decoration: none;
   color : inherit;
+  font-size: var(--font-size);
+
+}
+
+span, p {
+  font-size: var(--font-size);
+}
+
+h1 {
+  font-size: var(--font-size-xll);
 }
