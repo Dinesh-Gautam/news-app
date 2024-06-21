@@ -10,8 +10,8 @@ import SeparatedValues from "./utils/SeparatedValues";
 import useFavorite from "../hooks/useFavorite";
 
 export function Detail() {
-  const { getParam } = useSearchParamsActions();
   const { data, loading, error } = useNewsApi(actions.GET_ARTICLE_DETAIL);
+  const { getParam } = useSearchParamsActions();
 
   if (error.error) return <Error message={error.message} />;
 
@@ -25,15 +25,17 @@ export function Detail() {
     <div className={styles.container}>
       <div></div>
       <div className={styles.main}>
-        <div className={styles.header}>
-          <Category categories={article.categories} />
-        </div>
+        {!isEmpty(article.categories) && (
+          <div className={styles.header}>
+            <Category categories={article.categories} />
+          </div>
+        )}
         <div className={styles.top}>
           <Info
             authors={article.authors}
             date={article.date}
             body={article.body}
-            country={article.location.country.label.eng}
+            loading={article.location}
           />
           <h1>{article.title}</h1>
           {article.image && (
@@ -65,6 +67,57 @@ function FavoriteButton(data) {
     </button>
   ) : (
     <button onClick={() => addToFavorites(id, data)}>Add to Favorites</button>
+  );
+}
+
+function Category({ categories }) {
+  const category = useMemo(
+    () =>
+      categories
+        .filter((c) => c.uri.startsWith("news"))
+        .reduce((a, b) => (a = b.wgt > a.wgt ? b : a), { wgt: 0 }),
+    [categories]
+  );
+
+  return (
+    <div className={styles.category}>
+      {category && <span>{category.label}</span>}
+    </div>
+  );
+}
+
+function Info({ authors, date, body, location }) {
+  const country =
+    location && (location.country.label.eng ?? location.label.eng);
+  return (
+    <div className={styles.info}>
+      <SeparatedValues
+        values={[
+          !isEmpty(authors) && (
+            <span>
+              By{" "}
+              <span className={styles.authorsName}>
+                {authors.map((a) => a.name).join(", ")}
+              </span>
+            </span>
+          ),
+          date && (
+            <span>
+              {new Date(date).toLocaleDateString(undefined, {
+                weekday: undefined,
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </span>
+          ),
+          country && <span>{country}</span>,
+        ]}
+      />
+      <div className={styles.readTime}>
+        <span>{calculateReadTime(body)} min Read</span>
+      </div>
+    </div>
   );
 }
 
@@ -104,51 +157,6 @@ function SkeletonLoading() {
         <div className={styles.content}>
           <Skeleton.Paragraph />
         </div>
-      </div>
-    </div>
-  );
-}
-
-function Category({ categories }) {
-  const category = useMemo(
-    () =>
-      categories
-        .filter((c) => c.uri.startsWith("news"))
-        .reduce((a, b) => (a = b.wgt > a.wgt ? b : a), { wgt: 0 }),
-    [categories]
-  );
-
-  return (
-    <div className={styles.category}>
-      {category && <span>{category.label}</span>}
-    </div>
-  );
-}
-
-function Info({ authors, date, body, country }) {
-  return (
-    <div className={styles.info}>
-      <SeparatedValues
-        values={[
-          <span>
-            By{" "}
-            <span className={styles.authorsName}>
-              {authors.map((a) => a.name).join(", ")}
-            </span>
-          </span>,
-          <span>
-            {new Date(date).toLocaleDateString(undefined, {
-              weekday: undefined,
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </span>,
-          <span>{country}</span>,
-        ]}
-      />
-      <div className={styles.readTime}>
-        <span>{calculateReadTime(body)} min Read</span>
       </div>
     </div>
   );

@@ -3,12 +3,14 @@ import React from "react";
 function SeparatedValues({ values, separator = "•" }) {
   return (
     <>
-      {values.map((ele, index) => (
-        <React.Fragment key={index}>
-          {ele}
-          {index !== values.length - 1 && <span> {separator} </span>}
-        </React.Fragment>
-      ))}
+      {values
+        .filter((e) => e)
+        .map((ele, index, arr) => (
+          <React.Fragment key={index}>
+            {ele}
+            {index !== arr.length - 1 && <span> {separator} </span>}
+          </React.Fragment>
+        ))}
     </>
   );
 }
