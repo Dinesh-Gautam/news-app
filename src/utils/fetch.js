@@ -15,7 +15,7 @@ export function customFetch(endPoint, params) {
   const controller = new AbortController();
   const signal = controller.signal;
 
-  const promise = fetch(fetchUrl, signal).then(async (response) => {
+  const promise = fetch(fetchUrl, { signal }).then(async (response) => {
     const json = await response.json();
 
     if (response.status === 200) {

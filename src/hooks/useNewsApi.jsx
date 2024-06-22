@@ -60,7 +60,10 @@ export function useNewsApi(action) {
 
       promise
         .then((data) => setData(data))
-        .catch((error) => setError({ error: true, ...error }))
+        .catch(
+          (error) =>
+            !controller.signal.aborted && setError({ error: true, ...error })
+        )
         .finally(() => setLoading(false));
 
       return () => controller?.abort();
