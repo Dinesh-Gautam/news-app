@@ -2,7 +2,7 @@
 
 https://news-app-react-52.netlify.app/
 
-#Screenshots
+# Screenshots
 
 ## Home
 ![Home](https://github.com/Dinesh-Gautam/news-app/assets/69267018/ff2e0e6c-f1ad-4a59-9141-7a426082926e)
