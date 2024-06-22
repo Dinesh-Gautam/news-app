@@ -2,6 +2,15 @@
 
 https://news-app-react-52.netlify.app/
 
+#Screenshots
+
+## Home
+![Home](https://github.com/Dinesh-Gautam/news-app/assets/69267018/ff2e0e6c-f1ad-4a59-9141-7a426082926e)
+
+## Detail
+![Detail](https://github.com/Dinesh-Gautam/news-app/assets/69267018/7c65e7dc-bf3c-49cd-8e5d-34cfbe16ff7c)
+
+
 # Required `.env` file
 
 \*_.env is public_
