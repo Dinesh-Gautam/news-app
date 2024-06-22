@@ -3,9 +3,8 @@ import { cn, getFormattedTime } from "../utils/common";
 import { Layout } from "./Layout";
 import Skeleton from "./Skeleton";
 import styles from "./article.module.css";
-import SeparatedValues from "./utils/SeparatedValues";
-import { getProxyUrl } from "../utils/proxy";
 import ProxyImage from "./utils/ProxyImage";
+import SeparatedValues from "./utils/SeparatedValues";
 
 export function Article({ title, body, image, dateTime, isBanner, uri }) {
   return (
