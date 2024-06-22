@@ -37,7 +37,7 @@ export function Detail() {
             authors={article.authors}
             date={article.date}
             body={article.body}
-            loading={article.location}
+            location={article.location}
           />
           <h1>{article.title}</h1>
           {article.image && (
