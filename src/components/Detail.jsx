@@ -8,6 +8,7 @@ import useSearchParamsActions from "../hooks/useSearchParamsActions";
 import { calculateReadTime, isEmpty } from "../utils/common";
 import { Layout } from "./Layout";
 import styles from "./detail.module.css";
+import ProxyImage from "./utils/ProxyImage";
 import SeparatedValues from "./utils/SeparatedValues";
 
 export function Detail() {
@@ -41,7 +42,7 @@ export function Detail() {
           <h1>{article.title}</h1>
           {article.image && (
             <div className={styles.imageContainer}>
-              <img loading="lazy" src={article.image} alt={article.title} />
+              <ProxyImage src={article.image} alt={article.title} />
             </div>
           )}
           <div className={styles.additionalInfo}>

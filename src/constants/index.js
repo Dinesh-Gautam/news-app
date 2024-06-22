@@ -29,3 +29,8 @@ export const ENDPOINTS = {
   GET_ARTICLE_DETAIL: `https://www.newsapi.ai/api/v1/article/getArticle`,
   GET_ARTICLES: `https://www.newsapi.ai/api/v1/article/getArticles`,
 };
+
+/**
+ * MISC
+ */
+export const FALLBACK_IMAGE_URL = `https://thumbs.dreamstime.com/b/newspaper-line-news-icon-press-article-paper-journal-212522658.jpg`;

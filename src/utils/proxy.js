@@ -1,7 +1,7 @@
 import { ENDPOINTS, NEWS_API_KEY } from "../constants";
 
 /**
- * Give the proxy url for the given target
+ * Gives the proxy url for the given target
  *
  * @param {string} target URL
  */

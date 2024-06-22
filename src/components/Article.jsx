@@ -5,6 +5,7 @@ import Skeleton from "./Skeleton";
 import styles from "./article.module.css";
 import SeparatedValues from "./utils/SeparatedValues";
 import { getProxyUrl } from "../utils/proxy";
+import ProxyImage from "./utils/ProxyImage";
 
 export function Article({ title, body, image, dateTime, isBanner, uri }) {
   return (
@@ -12,7 +13,7 @@ export function Article({ title, body, image, dateTime, isBanner, uri }) {
       <Link to={"/detail?id=" + uri}>
         {image && (
           <div className={styles.imageContainer}>
-            <img loading="lazy" src={getProxyUrl(image)} alt={title} />
+            <ProxyImage src={image} alt={title} />
           </div>
         )}
         <div className={styles.content}>
