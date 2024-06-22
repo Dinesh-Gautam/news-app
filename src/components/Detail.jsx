@@ -90,7 +90,7 @@ function Category({ categories }) {
 
 function Info({ authors, date, body, location }) {
   const country =
-    location && (location.country.label.eng ?? location.label.eng);
+    location && (location?.country?.label.eng ?? location.label.eng);
   return (
     <div className={styles.info}>
       <SeparatedValues
